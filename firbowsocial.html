@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FirBow Social — Social Media for Small Business</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #af2029;
+    --navy: #010169;
+    --offwhite: #f2f1eb;
+    --pink: #fec6e9;
+    --blue-light: #99cdef;
+    --black: #111;
+    --white: #ffffff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--offwhite);
+    color: var(--black);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    height: 64px;
+    border-bottom: 3px solid var(--red);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  .logo-mark {
+    width: 36px;
+    height: 36px;
+    position: relative;
+  }
+
+  .logo-mark svg { width: 100%; height: 100%; }
+
+  .nav-brand {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 1.3rem;
+    color: var(--offwhite);
+    letter-spacing: 0.03em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--offwhite);
+    text-decoration: none;
+    opacity: 0.75;
+    transition: opacity 0.2s, color 0.2s;
+  }
+
+  .nav-links a:hover { opacity: 1; color: var(--pink); }
+
+  .nav-cta {
+    background: var(--red);
+    color: var(--white) !important;
+    opacity: 1 !important;
+    padding: 8px 20px;
+    border-radius: 2px;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: #8a1820 !important; }
+
+  /* HERO */
+  #home {
+    min-height: 100vh;
+    background: var(--navy);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 100px 80px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #home::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    border: 120px solid rgba(175,32,41,0.12);
+    pointer-events: none;
+  }
+
+  #home::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: 30%;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    border: 80px solid rgba(153,205,239,0.08);
+    pointer-events: none;
+  }
+
+  .hero-content { position: relative; z-index: 2; }
+
+  .hero-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 20px;
+  }
+
+  .hero-headline {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    line-height: 0.95;
+    color: var(--offwhite);
+    margin-bottom: 28px;
+  }
+
+  .hero-headline em {
+    color: var(--red);
+    font-style: italic;
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    line-height: 1.65;
+    color: rgba(242,241,235,0.7);
+    max-width: 480px;
+    margin-bottom: 40px;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--red);
+    color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary:hover { background: #8a1820; transform: translateY(-2px); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--offwhite);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    border-radius: 2px;
+    text-decoration: none;
+    border: 2px solid rgba(242,241,235,0.3);
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .btn-ghost:hover { border-color: var(--offwhite); color: var(--white); }
+
+  .hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-logo-big {
+    width: 300px;
+    height: 300px;
+    opacity: 0.15;
+  }
+
+  .hero-stats {
+    position: absolute;
+    bottom: 48px;
+    left: 80px;
+    right: 80px;
+    display: flex;
+    gap: 48px;
+    border-top: 1px solid rgba(242,241,235,0.15);
+    padding-top: 32px;
+    z-index: 2;
+  }
+
+  .stat-item { }
+
+  .stat-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 2.2rem;
+    color: var(--red);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.85rem;
+    color: rgba(242,241,235,0.55);
+    margin-top: 4px;
+  }
+
+  /* SECTION BASE */
+  section { padding: 100px 80px; }
+
+  .section-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1;
+    color: var(--navy);
+    margin-bottom: 20px;
+  }
+
+  .section-title.light { color: var(--offwhite); }
+  .section-title em { color: var(--red); font-style: italic; }
+
+  .section-intro {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #444;
+    max-width: 600px;
+    margin-bottom: 60px;
+  }
+
+  .section-intro.light { color: rgba(242,241,235,0.7); }
+
+  /* MISSION */
+  #about {
+    background: var(--offwhite);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .mission-quote {
+    background: var(--navy);
+    padding: 56px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .mission-quote::before {
+    content: '"';
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 16rem;
+    color: rgba(175,32,41,0.12);
+    position: absolute;
+    top: -40px;
+    left: 20px;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .mission-quote p {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-style: italic;
+    font-size: 1.8rem;
+    line-height: 1.35;
+    color: var(--offwhite);
+    position: relative;
+    z-index: 1;
+  }
+
+  .mission-quote p span { color: var(--pink); }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .value-card {
+    border-left: 3px solid var(--red);
+    padding-left: 20px;
+  }
+
+  .value-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+
+  .value-desc {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #555;
+  }
+
+  /* TEAM */
+  #team {
+    background: var(--navy);
+    text-align: center;
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    max-width: 800px;
+    margin: 0 auto 64px;
+  }
+
+  .team-card {
+    background: rgba(242,241,235,0.06);
+    border: 1px solid rgba(242,241,235,0.12);
+    padding: 40px 32px;
+    transition: background 0.2s;
+    text-align: left;
+  }
+
+  .team-card:hover { background: rgba(242,241,235,0.1); }
+
+  .team-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 1.6rem;
+    color: var(--offwhite);
+    margin-bottom: 4px;
+  }
+
+  .team-role {
+    font-size: 0.85rem;
+    color: var(--pink);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 20px;
+  }
+
+  .team-exp {
+    font-size: 0.9rem;
+    color: rgba(242,241,235,0.55);
+    margin-bottom: 16px;
+  }
+
+  .strength-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .strength-list li {
+    font-size: 0.9rem;
+    color: rgba(242,241,235,0.75);
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .strength-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--red);
+  }
+
+  .contrib-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(242,241,235,0.4);
+    margin-bottom: 24px;
+    margin-top: 32px;
+  }
+
+  .contrib-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .contrib-card {
+    background: rgba(175,32,41,0.1);
+    border: 1px solid rgba(175,32,41,0.2);
+    padding: 24px;
+    text-align: left;
+  }
+
+  .contrib-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: var(--offwhite);
+    margin-bottom: 12px;
+  }
+
+  /* SERVICES */
+  #services {
+    background: var(--offwhite);
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--navy);
+    border: 2px solid var(--navy);
+  }
+
+  .service-card {
+    background: var(--offwhite);
+    padding: 40px 32px;
+    transition: background 0.2s, color 0.2s;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--red);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+    transform-origin: left;
+  }
+
+  .service-card:hover::after { transform: scaleX(1); }
+
+  .service-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 20px;
+    color: var(--red);
+  }
+
+  .service-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 1.35rem;
+    color: var(--navy);
+    margin-bottom: 10px;
+  }
+
+  .service-desc {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #555;
+  }
+
+  /* PACKAGES */
+  #packages {
+    background: var(--navy);
+  }
+
+  .packages-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .pkg-section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 1.1rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--offwhite);
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--red);
+    margin-bottom: 24px;
+  }
+
+  .pkg-section-sub {
+    font-style: italic;
+    font-size: 0.85rem;
+    color: rgba(242,241,235,0.5);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 400;
+    margin-bottom: 24px;
+    display: block;
+    margin-top: -16px;
+  }
+
+  .pkg-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(242,241,235,0.1);
+  }
+
+  .pkg-name {
+    font-size: 0.95rem;
+    color: rgba(242,241,235,0.8);
+    max-width: 70%;
+  }
+
+  .pkg-price {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 1.3rem;
+    color: var(--pink);
+    white-space: nowrap;
+  }
+
+  .pkg-note {
+    font-size: 0.8rem;
+    color: rgba(242,241,235,0.35);
+    margin-top: 20px;
+    font-style: italic;
+  }
+
+  /* WHY */
+  #why {
+    background: var(--red);
+  }
+
+  #why .section-title { color: var(--offwhite); }
+  #why .section-intro { color: rgba(242,241,235,0.8); }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+  }
+
+  .why-card { }
+
+  .why-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 3.5rem;
+    color: rgba(255,255,255,0.15);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .why-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: var(--offwhite);
+    margin-bottom: 8px;
+  }
+
+  .why-desc {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: rgba(242,241,235,0.75);
+  }
+
+  /* RESULTS */
+  #results {
+    background: var(--offwhite);
+    text-align: center;
+  }
+
+  .results-case {
+    background: var(--navy);
+    padding: 60px;
+    margin-bottom: 40px;
+    text-align: left;
+  }
+
+  .case-client {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 8px;
+  }
+
+  .case-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 2rem;
+    color: var(--offwhite);
+    margin-bottom: 40px;
+  }
+
+  .case-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+
+  .case-stat-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 3rem;
+    color: var(--red);
+    line-height: 1;
+  }
+
+  .case-stat-label {
+    font-size: 0.9rem;
+    color: rgba(242,241,235,0.6);
+    margin-top: 6px;
+  }
+
+  .case-stat-bench {
+    font-size: 0.78rem;
+    color: rgba(242,241,235,0.35);
+    margin-top: 4px;
+    font-style: italic;
+  }
+
+  /* TESTIMONIALS */
+  #testimonials {
+    background: var(--navy);
+    text-align: center;
+  }
+
+  .testimonial-placeholder {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .testimonial-card {
+    background: rgba(242,241,235,0.05);
+    border: 1px solid rgba(242,241,235,0.1);
+    padding: 32px;
+    text-align: left;
+  }
+
+  .testi-stars {
+    color: var(--pink);
+    font-size: 1rem;
+    margin-bottom: 16px;
+    letter-spacing: 2px;
+  }
+
+  .testi-quote {
+    font-style: italic;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: rgba(242,241,235,0.75);
+    margin-bottom: 20px;
+  }
+
+  .testi-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--offwhite);
+    letter-spacing: 0.05em;
+  }
+
+  .testi-biz {
+    font-size: 0.8rem;
+    color: rgba(242,241,235,0.4);
+  }
+
+  /* BOOK / CONTACT */
+  #book {
+    background: var(--offwhite);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .book-info {}
+
+  .discovery-price {
+    background: var(--red);
+    display: inline-flex;
+    flex-direction: column;
+    padding: 20px 28px;
+    margin-bottom: 32px;
+  }
+
+  .dp-label { font-size: 0.8rem; color: rgba(255,255,255,0.7); letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; }
+  .dp-price { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 2.5rem; color: var(--white); line-height: 1; }
+  .dp-was { font-size: 0.85rem; font-style: italic; color: rgba(255,255,255,0.65); text-decoration: line-through; }
+
+  .what-happens {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 28px;
+  }
+
+  .wh-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .wh-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--red);
+    margin-top: 7px;
+    flex-shrink: 0;
+  }
+
+  .wh-text { font-size: 0.95rem; line-height: 1.5; color: #444; }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .form-group label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--navy);
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 12px 16px;
+    border: 2px solid #ddd;
+    border-radius: 0;
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.95rem;
+    background: var(--white);
+    color: var(--black);
+    transition: border-color 0.2s;
+    outline: none;
+    appearance: none;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--red);
+  }
+
+  .form-group textarea { height: 120px; resize: vertical; }
+
+  .form-submit-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .contact-alt {
+    font-size: 0.85rem;
+    color: #777;
+  }
+
+  .contact-alt a { color: var(--red); text-decoration: none; font-weight: 600; }
+  .contact-alt a:hover { text-decoration: underline; }
+
+  /* REFERRAL */
+  .referral-banner {
+    background: var(--black);
+    padding: 48px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+  }
+
+  .ref-text {}
+  .ref-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 8px;
+  }
+  .ref-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 2rem;
+    color: var(--offwhite);
+  }
+  .ref-desc {
+    font-size: 0.95rem;
+    color: rgba(242,241,235,0.55);
+    margin-top: 8px;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy);
+    padding: 60px 80px 40px;
+    border-top: 3px solid var(--red);
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 48px;
+  }
+
+  .footer-brand-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 1.6rem;
+    color: var(--offwhite);
+    margin-bottom: 12px;
+  }
+
+  .footer-tagline {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: rgba(242,241,235,0.5);
+    max-width: 300px;
+  }
+
+  .footer-col-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 20px;
+  }
+
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer-links a {
+    font-size: 0.9rem;
+    color: rgba(242,241,235,0.55);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--offwhite); }
+
+  .footer-contact-item {
+    font-size: 0.9rem;
+    color: rgba(242,241,235,0.55);
+    margin-bottom: 8px;
+  }
+
+  .footer-contact-item a {
+    color: var(--pink);
+    text-decoration: none;
+  }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(242,241,235,0.1);
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-copy { font-size: 0.8rem; color: rgba(242,241,235,0.3); }
+
+  .founding-badge {
+    background: var(--red);
+    color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+  }
+
+  /* ANNOUNCE BAR */
+  .announce-bar {
+    background: var(--red);
+    text-align: center;
+    padding: 10px 20px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.06em;
+    color: var(--white);
+    position: fixed;
+    top: 64px; left: 0; right: 0;
+    z-index: 99;
+  }
+
+  .announce-bar a { color: var(--white); text-decoration: underline; }
+
+  /* FIX for announce bar + nav */
+  #home, section, .referral-banner, footer { scroll-margin-top: 106px; }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-content > * {
+    animation: fadeUp 0.7s ease forwards;
+    opacity: 0;
+  }
+
+  .hero-tag { animation-delay: 0.1s; }
+  .hero-headline { animation-delay: 0.25s; }
+  .hero-sub { animation-delay: 0.4s; }
+  .hero-buttons { animation-delay: 0.55s; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    section, #home, #about, #book { padding: 60px 24px; }
+    #home, #about, #book { grid-template-columns: 1fr; }
+    .hero-visual { display: none; }
+    .hero-stats { left: 24px; right: 24px; gap: 24px; flex-wrap: wrap; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .why-grid { grid-template-columns: 1fr 1fr; }
+    .packages-split { grid-template-columns: 1fr; }
+    .testimonial-placeholder { grid-template-columns: 1fr; }
+    .referral-banner { padding: 40px 24px; flex-direction: column; text-align: center; }
+    footer { padding: 40px 24px 32px; }
+    .footer-top { grid-template-columns: 1fr; gap: 32px; }
+    .case-stats { grid-template-columns: 1fr; gap: 24px; }
+  }
+
+  @media (max-width: 600px) {
+    .services-grid { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr; }
+    .team-grid, .contrib-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .values-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCE BAR -->
+<div class="announce-bar">
+  🎉 Founding client rates now available — <a href="#book">limited spots</a>. Discovery call from just £100.
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#home" class="nav-logo">
+    <div class="logo-mark">
+      <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="5,55 35,5 35,55" fill="#af2029"/>
+        <path d="M35,10 A22,22,0,0,1,35,50" stroke="#f2f1eb" stroke-width="5" fill="none"/>
+      </svg>
+    </div>
+    <span class="nav-brand">FirBow Social</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#packages">Packages</a></li>
+    <li><a href="#results">Results</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#book" class="nav-cta">Book a Call</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-content">
+    <p class="hero-tag">Social Media for Small Business</p>
+    <h1 class="hero-headline">It's time for<br>David &amp; Davina<br>to beat <em>Goliath.</em></h1>
+    <p class="hero-sub">We help small businesses use social media to punch above their weight — without the big agency price tag or the jargon you didn't ask for.</p>
+    <div class="hero-buttons">
+      <a href="#book" class="btn-primary">Book a Discovery Call</a>
+      <a href="#services" class="btn-ghost">See What We Offer</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <svg class="hero-logo-big" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="10,180 110,20 110,180" fill="#f2f1eb"/>
+      <path d="M110,35 A75,75,0,0,1,110,165" stroke="#f2f1eb" stroke-width="16" fill="none"/>
+    </svg>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num">25+</div>
+      <div class="stat-label">Years combined experience</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">406K</div>
+      <div class="stat-label">Ad views from £500 spend</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">£0.02</div>
+      <div class="stat-label">Per engagement (vs £0.30 benchmark)</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">Sky · FB · UBS</div>
+      <div class="stat-label">Where our team cut their teeth</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT / MISSION -->
+<section id="about">
+  <div>
+    <p class="section-tag">Who We Are</p>
+    <h2 class="section-title">A different kind<br>of <em>agency.</em></h2>
+    <p class="section-intro">We're not here to lock you into big retainers or drown you in dashboards you don't understand. We're here to help you get more from social — however much or little that looks like.</p>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-title">Honesty &amp; Clarity</div>
+        <div class="value-desc">If Social isn't right for your business right now, we'll tell you. No hard sell, ever.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-title">Small Biz Specialism</div>
+        <div class="value-desc">We know how hard it is to compete with big brands and huge budgets. We level the field.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-title">Use Us Once If You Want</div>
+        <div class="value-desc">One-off training, a single strategy session — whatever you need, no strings attached.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-title">25+ Years in the Room</div>
+        <div class="value-desc">Our team has worked inside Sky, Facebook, UBS, Experian and more. We know this world inside out.</div>
+      </div>
+    </div>
+  </div>
+  <div class="mission-quote">
+    <p>"It's time for <span>David and Davina</span> to beat Goliath. We help small businesses use social media to punch above their weight."</p>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+  <p class="section-tag" style="color:var(--pink)">The Team</p>
+  <h2 class="section-title light">The people <em>behind</em> the strategy.</h2>
+  <p class="section-intro light">Between us, we've worked across global brands, fast-moving platforms and businesses at every stage of growth.</p>
+
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-name">Diana Elder</div>
+      <div class="team-role">Co-Founder</div>
+      <div class="team-exp">13 years at Sky &amp; Experian</div>
+      <ul class="strength-list">
+        <li>Channel strategy</li>
+        <li>Content strategy</li>
+        <li>New platform updates</li>
+      </ul>
+    </div>
+    <div class="team-card">
+      <div class="team-name">Doug Elder</div>
+      <div class="team-role">Co-Founder</div>
+      <div class="team-exp">13 years at Sky, Facebook &amp; UBS</div>
+      <ul class="strength-list">
+        <li>Social Media reporting</li>
+        <li>Paid Social strategy</li>
+        <li>Content creation</li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="contrib-label">Expert Contributors</p>
+  <div class="contrib-grid">
+    <div class="contrib-card">
+      <div class="contrib-name">Byron Fitzpatrick</div>
+      <ul class="strength-list">
+        <li>16 years at Sky, Brainlabs &amp; Caliber</li>
+        <li>Social platform relationships</li>
+        <li>Social Media strategy</li>
+      </ul>
+    </div>
+    <div class="contrib-card">
+      <div class="contrib-name">Ryan Rosario</div>
+      <ul class="strength-list">
+        <li>13 years at Sky</li>
+        <li>Social video creation</li>
+        <li>Social content strategy</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <p class="section-tag">What We Do</p>
+  <h2 class="section-title">Our <em>services.</em></h2>
+  <p class="section-intro">Pick what you need. Leave the rest. Every service is available standalone or as part of a package.</p>
+  <div class="services-grid">
+
+    <div class="service-card">
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="24" cy="24" r="20"/>
+        <path d="M24 4 v6 M24 38 v6 M4 24 h6 M38 24 h6"/>
+        <circle cx="24" cy="24" r="8"/>
+      </svg>
+      <div class="service-name">Channel Strategy</div>
+      <div class="service-desc">A bespoke plan covering your target audience, the right platforms, and the metrics that actually matter to your business — not vanity numbers.</div>
+    </div>
+
+    <div class="service-card">
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="4" y="8" width="40" height="32" rx="2"/>
+        <path d="M16 28 l6-8 6 6 6-10"/>
+      </svg>
+      <div class="service-name">Social Media Reporting</div>
+      <div class="service-desc">Monthly, quarterly or annual reports with 5 metrics that matter to you. Or we build you a real-time dashboard so you always know what's happening.</div>
+    </div>
+
+    <div class="service-card">
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="24" cy="16" r="8"/>
+        <path d="M12 40 c0-8 24-8 24 0"/>
+        <path d="M34 12 l8-6 M36 20 l8 2"/>
+      </svg>
+      <div class="service-name">Paid Social Strategy</div>
+      <div class="service-desc">Reach the right audience at the right time. We set up and run paid campaigns, or train you to run them yourself — your call.</div>
+    </div>
+
+    <div class="service-card">
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="8" y="4" width="32" height="40" rx="2"/>
+        <path d="M16 16 h16 M16 24 h16 M16 32 h10"/>
+      </svg>
+      <div class="service-name">Content Creation</div>
+      <div class="service-desc">Full content calendars including imagery and copy for 20+ posts. Images as standard; video available. We also build Canva templates so you can create content yourself.</div>
+    </div>
+
+    <div class="service-card">
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="4" y="12" width="40" height="28" rx="2"/>
+        <path d="M16 12 V8 a8 8 0 0 1 16 0 v4"/>
+        <circle cx="24" cy="28" r="4"/>
+      </svg>
+      <div class="service-name">Competitor Analysis</div>
+      <div class="service-desc">We analyse up to 3 of your competitors — what they post, what works, and what people are saying about them online.</div>
+    </div>
+
+    <div class="service-card">
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M24 4 l4 12 h12 l-10 8 4 12 -10-8 -10 8 4-12 -10-8 h12z"/>
+      </svg>
+      <div class="service-name">Social Media Training</div>
+      <div class="service-desc">A half-day session with everything you need to manage your own social confidently. Plus free access to our Facebook community Q&amp;A — ask us anything, anytime.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section id="packages">
+  <p class="section-tag" style="color:var(--pink)">Pricing</p>
+  <h2 class="section-title light">Pick a combo,<br><em>save £££.</em></h2>
+  <p class="section-intro light">Two ways to work with us — ongoing support or one-off help. No pressure either way.</p>
+
+  <div class="packages-split">
+    <div>
+      <div class="pkg-section-label">Always-On</div>
+      <span class="pkg-section-sub">For more hands-on support</span>
+      <div class="pkg-row">
+        <div class="pkg-name">Monthly content calendar &amp; reporting</div>
+        <div class="pkg-price">£500/mo</div>
+      </div>
+      <div class="pkg-row">
+        <div class="pkg-name">Content, reporting &amp; community management</div>
+        <div class="pkg-price">£600/mo</div>
+      </div>
+      <div class="pkg-row">
+        <div class="pkg-name">Content, reporting &amp; quarterly paid campaign</div>
+        <div class="pkg-price">£800/mo</div>
+      </div>
+      <p class="pkg-note">Monthly content calendar includes 10 posts. Reporting covers one channel; +£100 per additional channel.</p>
+    </div>
+    <div>
+      <div class="pkg-section-label">One &amp; Done</div>
+      <span class="pkg-section-sub">If you want to do it yourself</span>
+      <div class="pkg-row">
+        <div class="pkg-name">Content &amp; reporting templates</div>
+        <div class="pkg-price">£350</div>
+      </div>
+      <div class="pkg-row">
+        <div class="pkg-name">Content, reporting &amp; paid best practice</div>
+        <div class="pkg-price">£600</div>
+      </div>
+      <div class="pkg-row">
+        <div class="pkg-name">Strategy &amp; competitor audit</div>
+        <div class="pkg-price">£800</div>
+      </div>
+      <p class="pkg-note">All founding client rates are 50% off standard pricing. Limited availability.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <p class="section-tag" style="color:var(--offwhite); opacity:0.7">Why FirBow</p>
+  <h2 class="section-title" style="color:var(--offwhite)">Why we're the<br>right <em style="color:var(--navy)">fit.</em></h2>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-num">01</div>
+      <div class="why-title">No jargon, ever</div>
+      <div class="why-desc">We speak plainly. You'll always know what we're doing and why. If something isn't working, we'll say so.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-num">02</div>
+      <div class="why-title">Small business at heart</div>
+      <div class="why-desc">We know big budgets and big teams aren't always available. We help you get a lot from a little.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-num">03</div>
+      <div class="why-title">25+ years experience</div>
+      <div class="why-desc">Our founders and contributors have operated inside some of the biggest brands and platforms in the world.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-num">04</div>
+      <div class="why-title">Your terms, not ours</div>
+      <div class="why-desc">No pressure to sign a long retainer. We're happy to be the agency you use just once — and we mean it.</div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section id="results">
+  <p class="section-tag">Proven Results</p>
+  <h2 class="section-title">Not vanity metrics.<br><em>Real impact.</em></h2>
+  <p class="section-intro">Here's what we've done for our clients — numbers that speak for themselves.</p>
+
+  <div class="results-case">
+    <div class="case-client">Case Study — Springshaw Publishing</div>
+    <div class="case-title">Facebook Brand Awareness Campaign</div>
+    <div class="case-stats">
+      <div>
+        <div class="case-stat-num">406,000</div>
+        <div class="case-stat-label">Ad views</div>
+        <div class="case-stat-bench">£1.23 per 1k views (benchmark: £5)</div>
+      </div>
+      <div>
+        <div class="case-stat-num">30,000+</div>
+        <div class="case-stat-label">Post engagements</div>
+        <div class="case-stat-bench">£0.02 per engagement (benchmark: £0.30)</div>
+      </div>
+      <div>
+        <div class="case-stat-num">£500</div>
+        <div class="case-stat-label">Total spend, 41 ads</div>
+        <div class="case-stat-bench">Industry-beating efficiency across the board</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <p class="section-tag" style="color:var(--pink)">Reviews</p>
+  <h2 class="section-title light">Don't just take<br><em>our word for it.</em></h2>
+  <p class="section-intro light">We're a growing business — these are placeholder spots for client testimonials. More coming soon!</p>
+
+  <div class="testimonial-placeholder">
+    <div class="testimonial-card">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-quote">"FirBow helped us understand exactly what our social media should be doing for us — and then actually made it happen. No fluff, just results."</div>
+      <div class="testi-name">FOUNDING CLIENT</div>
+      <div class="testi-biz">Small business owner</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-quote">"We just needed a one-off strategy session and they delivered more than we expected. Honest, clear and genuinely useful."</div>
+      <div class="testi-name">FOUNDING CLIENT</div>
+      <div class="testi-biz">Independent retailer</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-quote">"Finally, a social media agency that actually tells you what you need rather than what sounds impressive. Highly recommend."</div>
+      <div class="testi-name">FOUNDING CLIENT</div>
+      <div class="testi-biz">Service business</div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOK + CONTACT -->
+<section id="book">
+  <div class="book-info">
+    <p class="section-tag">Get Started</p>
+    <h2 class="section-title">Book a<br><em>discovery call.</em></h2>
+    <div class="discovery-price">
+      <span class="dp-label">Founding Client Rate</span>
+      <span class="dp-price">£100</span>
+      <span class="dp-was">Reduced from £200</span>
+    </div>
+    <p class="section-intro" style="margin-bottom:0">A 1-hour call where we get to know your business, your goals, and whether social media is even the right move. We're not here to hard sell — we'd love a chat to see if we can help.</p>
+    <div class="what-happens">
+      <div class="wh-item"><div class="wh-dot"></div><div class="wh-text">Who is your target audience?</div></div>
+      <div class="wh-item"><div class="wh-dot"></div><div class="wh-text">Who are your main competitors?</div></div>
+      <div class="wh-item"><div class="wh-dot"></div><div class="wh-text">What does success look like for you?</div></div>
+      <div class="wh-item"><div class="wh-dot"></div><div class="wh-text">Is Social Media even right for your business?</div></div>
+    </div>
+  </div>
+
+  <div>
+    <div class="contact-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" placeholder="Jane">
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" placeholder="Smith">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Business Name</label>
+        <input type="text" placeholder="Your Business Ltd">
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="jane@yourbusiness.com">
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="07700 000000">
+      </div>
+      <div class="form-group">
+        <label>What do you need help with?</label>
+        <select>
+          <option value="">Select a service...</option>
+          <option>Discovery Call (I'm not sure yet)</option>
+          <option>Channel Strategy</option>
+          <option>Content Creation</option>
+          <option>Paid Social</option>
+          <option>Social Media Reporting</option>
+          <option>Competitor Analysis</option>
+          <option>Social Media Training</option>
+          <option>All of the above / Not sure</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Anything else we should know?</label>
+        <textarea placeholder="Tell us a bit about your business and what you're hoping to achieve..."></textarea>
+      </div>
+      <div class="form-submit-row">
+        <button class="btn-primary" type="button" onclick="alert('Thanks! In the live site this would submit your enquiry. Call us on 07432 523538 or email enquiries@firbowsocial.com')">Send Enquiry</button>
+        <div class="contact-alt">
+          Or call <a href="tel:07432523538">07432 523538</a><br>
+          or email <a href="mailto:enquiries@firbowsocial.com">enquiries@firbowsocial.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REFERRAL BANNER -->
+<div class="referral-banner">
+  <div class="ref-text">
+    <div class="ref-label">Referral Scheme</div>
+    <div class="ref-title">Know someone who could use us?</div>
+    <div class="ref-desc">Get paid 10% of what our clients pay when they choose to work with us.</div>
+  </div>
+  <div>
+    <a href="mailto:referrals@firbowsocial.com" class="btn-primary">referrals@firbowsocial.com</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-name">FirBow Social</div>
+      <div class="footer-tagline">We help small businesses use social media to punch above their weight. Honest, jargon-free, results-driven.</div>
+    </div>
+    <div>
+      <div class="footer-col-title">Navigate</div>
+      <ul class="footer-links">
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#team">The Team</a></li>
+        <li><a href="#services">Our Services</a></li>
+        <li><a href="#packages">Packages &amp; Pricing</a></li>
+        <li><a href="#results">Results</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#book">Book a Call</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Get In Touch</div>
+      <div class="footer-contact-item">📞 <a href="tel:07432523538">07432 523538</a></div>
+      <div class="footer-contact-item">✉️ <a href="mailto:enquiries@firbowsocial.com">enquiries@firbowsocial.com</a></div>
+      <div class="footer-contact-item" style="margin-top:16px">Referrals:<br><a href="mailto:referrals@firbowsocial.com">referrals@firbowsocial.com</a></div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 FirBow Social. All rights reserved.</div>
+    <div class="founding-badge">Founding Client Rates Available Now</div>
+  </div>
+</footer>
+
+</body>
+</html>
