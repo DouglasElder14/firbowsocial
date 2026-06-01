@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Packages & Pricing | FirBow Social</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #af2029;
+    --navy: #010169;
+    --offwhite: #f2f1eb;
+    --pink: #fec6e9;
+    --black: #111;
+    --white: #ffffff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--offwhite);
+    color: var(--black);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    height: 64px;
+    border-bottom: 3px solid var(--red);
+  }
+
+  .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+
+  .nav-brand {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 1.3rem;
+    color: var(--offwhite);
+    letter-spacing: 0.03em;
+  }
+
+  .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+
+  .nav-links a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--offwhite);
+    text-decoration: none;
+    opacity: 0.75;
+    transition: opacity 0.2s, color 0.2s;
+  }
+
+  .nav-links a:hover, .nav-links a.active { opacity: 1; color: var(--pink); }
+
+  .nav-cta {
+    background: var(--red);
+    color: var(--white) !important;
+    opacity: 1 !important;
+    padding: 8px 20px;
+    border-radius: 2px;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: #8a1820 !important; }
+
+  /* HERO */
+  .pk-hero {
+    background: var(--navy);
+    padding: 140px 80px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pk-hero::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    border: 100px solid rgba(175,32,41,0.1);
+    pointer-events: none;
+  }
+
+  .pk-breadcrumb {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.82rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(242,241,235,0.45);
+    margin-bottom: 20px;
+    position: relative; z-index: 2;
+  }
+
+  .pk-breadcrumb a { color: var(--pink); text-decoration: none; }
+  .pk-breadcrumb a:hover { text-decoration: underline; }
+
+  .pk-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 16px;
+    position: relative; z-index: 2;
+  }
+
+  .pk-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2.6rem, 5vw, 4.2rem);
+    line-height: 1;
+    color: var(--offwhite);
+    margin-bottom: 24px;
+    max-width: 700px;
+    position: relative; z-index: 2;
+  }
+
+  .pk-title em { color: var(--red); font-style: italic; }
+
+  .pk-intro {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: rgba(242,241,235,0.7);
+    max-width: 620px;
+    margin-bottom: 40px;
+    position: relative; z-index: 2;
+  }
+
+  /* JUMP LINKS */
+  .pk-jump {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    position: relative; z-index: 2;
+  }
+
+  .pk-jump a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 9px 20px;
+    border: 1px solid rgba(242,241,235,0.2);
+    background: rgba(242,241,235,0.06);
+    color: rgba(242,241,235,0.75);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .pk-jump a:hover { background: var(--red); border-color: var(--red); color: var(--white); }
+
+  /* FOUNDING BANNER */
+  .founding-bar {
+    background: var(--red);
+    padding: 16px 80px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.92rem;
+    letter-spacing: 0.05em;
+    color: var(--white);
+    text-align: center;
+  }
+
+  /* SECTION WRAPPER */
+  .pk-section {
+    padding: 80px 80px;
+    scroll-margin-top: 80px;
+  }
+
+  .pk-section:nth-child(even) { background: var(--white); }
+
+  .pk-section-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.78rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 10px;
+  }
+
+  .pk-section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 2.4rem;
+    color: var(--navy);
+    line-height: 1.05;
+    margin-bottom: 10px;
+  }
+
+  .pk-section-sub {
+    font-size: 0.95rem;
+    color: #777;
+    margin-bottom: 48px;
+    font-style: italic;
+  }
+
+  /* WHAT'S INCLUDED BOX */
+  .pk-includes {
+    background: var(--navy);
+    padding: 28px 36px;
+    margin-bottom: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 48px;
+  }
+
+  .pk-includes-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 14px;
+    grid-column: 1 / -1;
+  }
+
+  .pk-includes-col-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 0.95rem;
+    color: var(--offwhite);
+    margin-bottom: 10px;
+  }
+
+  .pk-includes ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .pk-includes li {
+    font-size: 0.85rem;
+    color: rgba(242,241,235,0.65);
+    padding-left: 14px;
+    position: relative;
+    line-height: 1.45;
+  }
+
+  .pk-includes li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--red);
+  }
+
+  /* PACKAGE CARDS GRID */
+  .pk-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .pk-card {
+    background: var(--offwhite);
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-top: 4px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  .pk-section:nth-child(even) .pk-card { background: var(--offwhite); }
+
+  .pk-card.featured {
+    background: var(--navy);
+    border-top-color: var(--red);
+  }
+
+  .pk-card-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 14px;
+  }
+
+  .pk-card.featured .pk-card-num { color: var(--pink); }
+
+  .pk-card-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 1.3rem;
+    color: var(--navy);
+    line-height: 1.15;
+    margin-bottom: 20px;
+    flex: 1;
+  }
+
+  .pk-card.featured .pk-card-name { color: var(--offwhite); }
+
+  .pk-card-includes {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 28px;
+  }
+
+  .pk-card-includes li {
+    font-size: 0.85rem;
+    color: #555;
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.45;
+  }
+
+  .pk-card.featured .pk-card-includes li { color: rgba(242,241,235,0.7); }
+
+  .pk-card-includes li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--red);
+    font-weight: 700;
+    font-size: 0.8rem;
+  }
+
+  .pk-card-pricing {
+    border-top: 1px solid rgba(1,1,105,0.1);
+    padding-top: 20px;
+    margin-top: auto;
+  }
+
+  .pk-card.featured .pk-card-pricing { border-top-color: rgba(242,241,235,0.12); }
+
+  .pk-card-price {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 2.2rem;
+    color: var(--red);
+    line-height: 1;
+  }
+
+  .pk-card-period {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #aaa;
+    margin-bottom: 8px;
+  }
+
+  .pk-card.featured .pk-card-period { color: rgba(242,241,235,0.4); }
+  .pk-card.featured .pk-card-price { color: var(--pink); }
+  .pk-section:nth-child(even) .pk-card.featured { background: var(--navy); }
+  .pk-card.featured .pk-card-includes li::before { color: var(--pink); }
+
+  .pk-card-saving {
+    display: inline-block;
+    background: rgba(175,32,41,0.1);
+    color: var(--red);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    padding: 4px 10px;
+    margin-top: 6px;
+  }
+
+  .pk-card.featured .pk-card-saving {
+    background: rgba(254,198,233,0.15);
+    color: var(--pink);
+  }
+
+  /* ONE & DONE CARDS */
+  .pk-oad-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .pk-oad-card {
+    background: var(--offwhite);
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+    border-top: 4px solid transparent;
+  }
+
+  .pk-oad-card.featured {
+    background: var(--navy);
+    border-top-color: var(--red);
+  }
+
+  .pk-oad-card-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 1.3rem;
+    color: var(--navy);
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+
+  .pk-oad-card.featured .pk-oad-card-name { color: var(--offwhite); }
+
+  .pk-oad-card-desc {
+    font-size: 0.88rem;
+    color: #666;
+    line-height: 1.65;
+    margin-bottom: 28px;
+    flex: 1;
+  }
+
+  .pk-oad-card.featured .pk-oad-card-desc { color: rgba(242,241,235,0.65); }
+
+  .pk-oad-pricing {
+    border-top: 1px solid rgba(1,1,105,0.1);
+    padding-top: 20px;
+  }
+
+  .pk-oad-card.featured .pk-oad-pricing { border-top-color: rgba(242,241,235,0.12); }
+
+  .pk-oad-price {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 2.2rem;
+    color: var(--red);
+    line-height: 1;
+  }
+
+  .pk-oad-was {
+    font-size: 0.82rem;
+    color: #bbb;
+    text-decoration: line-through;
+    margin-top: 4px;
+    font-style: italic;
+  }
+
+  .pk-oad-card.featured .pk-oad-was { color: rgba(242,241,235,0.3); }
+
+  .pk-oad-saving {
+    display: inline-block;
+    background: rgba(175,32,41,0.1);
+    color: var(--red);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    padding: 4px 10px;
+    margin-top: 8px;
+  }
+
+  .pk-oad-card.featured .pk-oad-saving {
+    background: rgba(254,198,233,0.15);
+    color: var(--pink);
+  }
+
+  /* DISCLAIMER */
+  .pk-disclaimer {
+    margin-top: 20px;
+    font-size: 0.8rem;
+    color: #aaa;
+    font-style: italic;
+  }
+
+  /* CTA */
+  .pk-cta {
+    background: var(--navy);
+    padding: 72px 80px;
+    text-align: center;
+  }
+
+  .pk-cta-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 14px;
+  }
+
+  .pk-cta-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--offwhite);
+    line-height: 1.05;
+    margin-bottom: 18px;
+  }
+
+  .pk-cta-title em { color: var(--red); font-style: italic; }
+
+  .pk-cta-desc {
+    font-size: 1rem;
+    color: rgba(242,241,235,0.65);
+    line-height: 1.7;
+    max-width: 520px;
+    margin: 0 auto 36px;
+  }
+
+  .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: var(--red);
+    color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: #8a1820; transform: translateY(-2px); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--offwhite);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    border-radius: 2px;
+    text-decoration: none;
+    border: 2px solid rgba(242,241,235,0.3);
+    transition: border-color 0.2s;
+    display: inline-block;
+  }
+
+  .btn-ghost:hover { border-color: var(--offwhite); }
+
+  /* RESPONSIVE */
+  /* HAMBURGER */
+  .nav-hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; z-index: 110; }
+  .nav-hamburger span { display: block; width: 24px; height: 2px; background: var(--offwhite); transition: transform 0.25s, opacity 0.25s; transform-origin: center; }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .mobile-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; background: var(--navy); border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 3px solid var(--red); z-index: 99; flex-direction: column; padding: 16px 24px 24px; gap: 4px; }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.1rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--offwhite); text-decoration: none; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.07); opacity: 0.8; transition: opacity 0.2s, color 0.2s; }
+  .mobile-menu a:last-child { border-bottom: none; }
+  .mobile-menu a:hover, .mobile-menu a.active { opacity: 1; color: var(--pink); }
+  .mobile-menu .mob-cta { margin-top: 8px; background: var(--red); color: var(--white) !important; opacity: 1 !important; padding: 12px 0; text-align: center; border-bottom: none !important; }
+
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none !important; }
+    .nav-hamburger { display: flex; }
+    .pk-hero { padding: 120px 24px 60px; }
+    .founding-bar { padding: 16px 24px; }
+    .pk-section { padding: 60px 24px; }
+    .pk-cards, .pk-oad-cards { grid-template-columns: 1fr; }
+    .pk-includes { grid-template-columns: 1fr; }
+    .pk-cta { padding: 60px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg width="32" height="32" viewBox="0 0 60 60" fill="none">
+      <polygon points="5,55 35,5 35,55" fill="#af2029"/>
+      <path d="M35,10 A22,22,0,0,1,35,50" stroke="#f2f1eb" stroke-width="5" fill="none"/>
+    </svg>
+    <span class="nav-brand">FirBow Social</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="packages.html" class="active">Packages</a></li>
+    <li><a href="resources.html">Resources</a></li>
+    <li><a href="partners.html">Partners</a></li>
+    <li><a href="index.html#book" class="nav-cta">Book a Call</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="about.html">About</a>
+  <a href="services.html">Services</a>
+  <a href="packages.html" class="active">Packages</a>
+  <a href="resources.html">Resources</a>
+  <a href="partners.html">Partners</a>
+  <a href="index.html#book" class="mob-cta">Book a Call</a>
+</div>
+
+<!-- HERO -->
+<div class="pk-hero">
+  <div class="pk-breadcrumb">
+    <a href="index.html">Home</a> &nbsp;/&nbsp; Packages &amp; Pricing
+  </div>
+  <div class="pk-tag">Packages &amp; Pricing</div>
+  <h1 class="pk-title">Pick what you need.<br>Leave what <em>you don't.</em></h1>
+  <p class="pk-intro">Whether you want ongoing hands-on support or a one-off boost to get you going, we've put together packages that bundle our most popular services at a real saving. And if none of these quite fit, just ask — we're happy to build something bespoke.</p>
+  <nav class="pk-jump" aria-label="Jump to section">
+    <a href="#always-on-monthly">Monthly packages</a>
+    <a href="#always-on-quarterly">Quarterly packages</a>
+    <a href="#one-and-done">One &amp; done</a>
+  </nav>
+</div>
+
+<!-- FOUNDING BANNER -->
+<div class="founding-bar">
+  🎉 All prices shown are founding client rates — approximately 50% off our standard pricing. Limited availability.
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- ALWAYS ON — MONTHLY -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="pk-section" id="always-on-monthly">
+  <div class="pk-section-eyebrow">Always-On · Monthly</div>
+  <h2 class="pk-section-title">Monthly packages</h2>
+  <p class="pk-section-sub">If you need something a little more hands-on, month to month.</p>
+
+  <!-- WHAT'S INCLUDED -->
+  <div class="pk-includes">
+    <div class="pk-includes-title">Every monthly package includes...</div>
+    <div>
+      <div class="pk-includes-col-title">Monthly Content Calendar</div>
+      <ul>
+        <li>10 image posts as standard</li>
+        <li>Imagery and copy for each post, ready to schedule</li>
+        <li>Content tailored to your brand and audience</li>
+      </ul>
+    </div>
+    <div>
+      <div class="pk-includes-col-title">Monthly Report</div>
+      <ul>
+        <li>Overview of your 5 chosen metrics</li>
+        <li>Overview of relevant competitor activity</li>
+        <li>Analysis of your best and worst performing posts</li>
+        <li>Recommendations for next month</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="pk-cards">
+
+    <!-- PACKAGE 1 -->
+    <div class="pk-card">
+      <div class="pk-card-num">Package 01</div>
+      <div class="pk-card-name">Content Calendar + Monthly Reporting</div>
+      <ul class="pk-card-includes">
+        <li>Monthly content calendar (10 image posts)</li>
+        <li>Monthly performance report</li>
+      </ul>
+      <div class="pk-card-pricing">
+        <div class="pk-card-price">£500</div>
+        <div class="pk-card-period">per month</div>
+        <div class="pk-card-saving">Save £400/mo vs. standard rate of £900</div>
+      </div>
+    </div>
+
+    <!-- PACKAGE 2 -->
+    <div class="pk-card featured">
+      <div class="pk-card-num">Package 02</div>
+      <div class="pk-card-name">Content Calendar + Reporting + Community Management</div>
+      <ul class="pk-card-includes">
+        <li>Monthly content calendar (10 image posts)</li>
+        <li>Monthly performance report</li>
+        <li>Community management — we handle your comments and DMs</li>
+      </ul>
+      <div class="pk-card-pricing">
+        <div class="pk-card-price">£600</div>
+        <div class="pk-card-period">per month</div>
+        <div class="pk-card-saving">Save £500/mo vs. standard rate of £1,100</div>
+      </div>
+    </div>
+
+    <!-- PACKAGE 3 -->
+    <div class="pk-card">
+      <div class="pk-card-num">Package 03</div>
+      <div class="pk-card-name">Content Calendar + Reporting + Paid Social Campaign</div>
+      <ul class="pk-card-includes">
+        <li>Monthly content calendar (10 image posts)</li>
+        <li>Monthly performance report</li>
+        <li>One paid social campaign — set up and run for you</li>
+      </ul>
+      <div class="pk-card-pricing">
+        <div class="pk-card-price">£800</div>
+        <div class="pk-card-period">per month</div>
+        <div class="pk-card-saving">Save £500/mo vs. standard rate of £1,300</div>
+      </div>
+    </div>
+
+  </div>
+  <p class="pk-disclaimer">Media budget for paid campaigns is additional and agreed with you before anything goes live. All founding client rates are approx. 50% off standard pricing.</p>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- ALWAYS ON — QUARTERLY -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="pk-section" id="always-on-quarterly">
+  <div class="pk-section-eyebrow">Always-On · Quarterly</div>
+  <h2 class="pk-section-title">Quarterly packages</h2>
+  <p class="pk-section-sub">Prefer to plan in longer blocks? Quarterly packages give you more content, deeper reporting and better value.</p>
+
+  <!-- WHAT'S INCLUDED -->
+  <div class="pk-includes">
+    <div class="pk-includes-title">Every quarterly package includes...</div>
+    <div>
+      <div class="pk-includes-col-title">Quarterly Content Calendar</div>
+      <ul>
+        <li>30 image posts as standard</li>
+        <li>Imagery and copy for each post, ready to schedule</li>
+        <li>Content planned across the full quarter</li>
+      </ul>
+    </div>
+    <div>
+      <div class="pk-includes-col-title">Quarterly Report</div>
+      <ul>
+        <li>Overview of your 5 chosen metrics</li>
+        <li>Overview of relevant competitor activity</li>
+        <li>Analysis of your best and worst performing posts</li>
+        <li>Recommendations for next quarter</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="pk-cards">
+
+    <!-- PACKAGE 1 -->
+    <div class="pk-card">
+      <div class="pk-card-num">Package 01</div>
+      <div class="pk-card-name">Quarterly Content Calendar + Quarterly Reporting</div>
+      <ul class="pk-card-includes">
+        <li>Quarterly content calendar (30 image posts)</li>
+        <li>Quarterly performance report</li>
+      </ul>
+      <div class="pk-card-pricing">
+        <div class="pk-card-price">£1,200</div>
+        <div class="pk-card-period">per quarter</div>
+        <div class="pk-card-saving">Save £900/qtr vs. standard rate of £2,100</div>
+      </div>
+    </div>
+
+    <!-- PACKAGE 2 -->
+    <div class="pk-card featured">
+      <div class="pk-card-num">Package 02</div>
+      <div class="pk-card-name">Quarterly Content + Reporting + Community Management</div>
+      <ul class="pk-card-includes">
+        <li>Quarterly content calendar (30 image posts)</li>
+        <li>Quarterly performance report</li>
+        <li>Community management throughout the quarter</li>
+      </ul>
+      <div class="pk-card-pricing">
+        <div class="pk-card-price">£1,500</div>
+        <div class="pk-card-period">per quarter</div>
+        <div class="pk-card-saving">Save £1,000/qtr vs. standard rate of £2,500</div>
+      </div>
+    </div>
+
+    <!-- PACKAGE 3 -->
+    <div class="pk-card">
+      <div class="pk-card-num">Package 03</div>
+      <div class="pk-card-name">Quarterly Content + Reporting + Two Paid Social Campaigns</div>
+      <ul class="pk-card-includes">
+        <li>Quarterly content calendar (30 image posts)</li>
+        <li>Quarterly performance report</li>
+        <li>Two paid social campaigns — set up and run for you</li>
+      </ul>
+      <div class="pk-card-pricing">
+        <div class="pk-card-price">£1,600</div>
+        <div class="pk-card-period">per quarter</div>
+        <div class="pk-card-saving">Save £1,700/qtr vs. standard rate of £3,300</div>
+      </div>
+    </div>
+
+  </div>
+  <p class="pk-disclaimer">Media budget for paid campaigns is additional and agreed with you before anything goes live. All founding client rates are approx. 50% off standard pricing.</p>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- ONE AND DONE -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="pk-section" id="one-and-done">
+  <div class="pk-section-eyebrow">One &amp; Done</div>
+  <h2 class="pk-section-title">Teach you how to fish</h2>
+  <p class="pk-section-sub">Rather do it yourself? These packages give you everything you need to take the reins with confidence.</p>
+
+  <div class="pk-oad-cards">
+
+    <div class="pk-oad-card">
+      <div class="pk-oad-card-name">Content &amp; Reporting Templates</div>
+      <div class="pk-oad-card-desc">A bespoke Canva content template and a reporting template so you can create consistent content and track your own performance — whenever you need, without coming back to us.</div>
+      <div class="pk-oad-pricing">
+        <div class="pk-oad-price">£350</div>
+        <div class="pk-oad-was">£500 if purchased separately</div>
+        <div class="pk-oad-saving">Save £150 with this bundle</div>
+      </div>
+    </div>
+
+    <div class="pk-oad-card featured">
+      <div class="pk-oad-card-name">Content, Reporting &amp; Paid Social Templates</div>
+      <div class="pk-oad-card-desc">Everything in the bundle above, plus our paid social best practice document — giving you the tools and know-how to plan, build and optimise your own campaigns.</div>
+      <div class="pk-oad-pricing">
+        <div class="pk-oad-price">£600</div>
+        <div class="pk-oad-was">£900 if purchased separately</div>
+        <div class="pk-oad-saving">Save £300 with this bundle</div>
+      </div>
+    </div>
+
+    <div class="pk-oad-card">
+      <div class="pk-oad-card-name">Strategy &amp; Competitor Audit</div>
+      <div class="pk-oad-card-desc">A bespoke social media strategy presentation covering your target audience, recommended channels and key metrics — plus a full audit of up to 3 competitors and what they're doing on social.</div>
+      <div class="pk-oad-pricing">
+        <div class="pk-oad-price">£400</div>
+        <div class="pk-oad-was">£550 if purchased separately</div>
+        <div class="pk-oad-saving">Save £150 with this bundle</div>
+      </div>
+    </div>
+
+  </div>
+  <p class="pk-disclaimer">All founding client rates are approx. 50% off standard pricing. Limited availability for early clients.</p>
+</div>
+
+<!-- CTA -->
+<div class="pk-cta">
+  <div class="pk-cta-tag">Not sure which fits?</div>
+  <h2 class="pk-cta-title">Let's figure it out<br><em>together.</em></h2>
+  <p class="pk-cta-desc">Book a discovery call and we'll work out which package — or combination of services — makes the most sense for where your business is right now.</p>
+  <div class="cta-buttons">
+    <a href="index.html#book" class="btn-primary">Book a Discovery Call</a>
+    <a href="services.html" class="btn-ghost">See Individual Services</a>
+  </div>
+</div>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mobileMenu.classList.toggle('open'); });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); }));
+</script>
+
+</body>
+</html>

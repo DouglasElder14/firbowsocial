@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Services | FirBow Social</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #af2029;
+    --navy: #010169;
+    --offwhite: #f2f1eb;
+    --pink: #fec6e9;
+    --blue-light: #99cdef;
+    --black: #111;
+    --white: #ffffff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--offwhite);
+    color: var(--black);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    height: 64px;
+    border-bottom: 3px solid var(--red);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  .nav-brand {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 1.3rem;
+    color: var(--offwhite);
+    letter-spacing: 0.03em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+    align-items: center;
+  }
+
+  .nav-links a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--offwhite);
+    text-decoration: none;
+    opacity: 0.75;
+    transition: opacity 0.2s, color 0.2s;
+  }
+
+  .nav-links a:hover { opacity: 1; color: var(--pink); }
+
+  .nav-cta {
+    background: var(--red);
+    color: var(--white) !important;
+    opacity: 1 !important;
+    padding: 8px 20px;
+    border-radius: 2px;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: #8a1820 !important; }
+
+  /* HERO */
+  .sv-hero {
+    background: var(--navy);
+    padding: 140px 80px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .sv-hero::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    border: 100px solid rgba(175,32,41,0.1);
+    pointer-events: none;
+  }
+
+  .sv-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: 20%;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    border: 60px solid rgba(153,205,239,0.07);
+    pointer-events: none;
+  }
+
+  .sv-breadcrumb {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.82rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(242,241,235,0.45);
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .sv-breadcrumb a { color: var(--pink); text-decoration: none; }
+  .sv-breadcrumb a:hover { text-decoration: underline; }
+
+  .sv-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .sv-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2.6rem, 5vw, 4.2rem);
+    line-height: 1;
+    color: var(--offwhite);
+    margin-bottom: 24px;
+    max-width: 700px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .sv-title em { color: var(--red); font-style: italic; }
+
+  .sv-intro {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: rgba(242,241,235,0.7);
+    max-width: 620px;
+    margin-bottom: 48px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* NAV PILLS — jump links */
+  .sv-service-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .sv-service-nav a {
+    background: rgba(242,241,235,0.08);
+    border: 1px solid rgba(242,241,235,0.18);
+    color: rgba(242,241,235,0.75);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 8px 18px;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+  }
+
+  .sv-service-nav a:hover {
+    background: var(--red);
+    border-color: var(--red);
+    color: var(--white);
+  }
+
+  /* FOUNDING BADGE */
+  .founding-note {
+    background: var(--red);
+    padding: 18px 80px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.06em;
+    color: var(--white);
+    text-align: center;
+  }
+
+  .founding-note a { color: var(--white); text-decoration: underline; }
+
+  /* SERVICE BLOCKS */
+  .sv-service {
+    padding: 80px 80px;
+    border-bottom: 1px solid rgba(1,1,105,0.1);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+    scroll-margin-top: 80px;
+  }
+
+  .sv-service:nth-child(even) {
+    background: var(--white);
+  }
+
+  .sv-service-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 12px;
+  }
+
+  .sv-service-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 2.2rem;
+    color: var(--navy);
+    line-height: 1.05;
+    margin-bottom: 20px;
+  }
+
+  .sv-service-body {
+    font-size: 0.98rem;
+    line-height: 1.75;
+    color: #444;
+    margin-bottom: 28px;
+  }
+
+  .sv-service-body p + p {
+    margin-top: 14px;
+  }
+
+  .sv-service-body strong {
+    color: var(--navy);
+    font-weight: 600;
+  }
+
+  /* ICON */
+  .sv-icon-wrap {
+    width: 56px;
+    height: 56px;
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+
+  .sv-icon-wrap svg {
+    width: 28px;
+    height: 28px;
+    stroke: var(--offwhite);
+  }
+
+  /* PRICING PANEL */
+  .sv-pricing {
+    background: var(--navy);
+    padding: 36px;
+    position: sticky;
+    top: 88px;
+  }
+
+  .sv-pricing-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 20px;
+  }
+
+  .sv-price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(242,241,235,0.08);
+    gap: 16px;
+  }
+
+  .sv-price-row:last-of-type { border-bottom: none; }
+
+  .sv-price-name {
+    font-size: 0.9rem;
+    color: rgba(242,241,235,0.75);
+    line-height: 1.4;
+    flex: 1;
+  }
+
+  .sv-price-name strong {
+    color: var(--offwhite);
+    display: block;
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+
+  .sv-price-amount {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 1.4rem;
+    color: var(--red);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .sv-pricing-note {
+    margin-top: 20px;
+    font-size: 0.78rem;
+    color: rgba(242,241,235,0.35);
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  /* BOTTOM CTA */
+  .sv-cta-strip {
+    background: var(--navy);
+    padding: 72px 80px;
+    text-align: center;
+  }
+
+  .sv-cta-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 16px;
+  }
+
+  .sv-cta-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--offwhite);
+    line-height: 1.05;
+    margin-bottom: 20px;
+  }
+
+  .sv-cta-title em { color: var(--red); font-style: italic; }
+
+  .sv-cta-desc {
+    font-size: 1rem;
+    color: rgba(242,241,235,0.65);
+    line-height: 1.7;
+    max-width: 560px;
+    margin: 0 auto 36px;
+  }
+
+  .sv-cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--red);
+    color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: #8a1820; transform: translateY(-2px); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--offwhite);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    border-radius: 2px;
+    text-decoration: none;
+    border: 2px solid rgba(242,241,235,0.3);
+    transition: border-color 0.2s;
+    display: inline-block;
+  }
+
+  .btn-ghost:hover { border-color: var(--offwhite); }
+
+  /* RESPONSIVE */
+  /* HAMBURGER */
+  .nav-hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; z-index: 110; }
+  .nav-hamburger span { display: block; width: 24px; height: 2px; background: var(--offwhite); transition: transform 0.25s, opacity 0.25s; transform-origin: center; }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .mobile-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; background: var(--navy); border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 3px solid var(--red); z-index: 99; flex-direction: column; padding: 16px 24px 24px; gap: 4px; }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.1rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--offwhite); text-decoration: none; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.07); opacity: 0.8; transition: opacity 0.2s, color 0.2s; }
+  .mobile-menu a:last-child { border-bottom: none; }
+  .mobile-menu a:hover, .mobile-menu a.active { opacity: 1; color: var(--pink); }
+  .mobile-menu .mob-cta { margin-top: 8px; background: var(--red); color: var(--white) !important; opacity: 1 !important; padding: 12px 0; text-align: center; border-bottom: none !important; }
+
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none !important; }
+    .nav-hamburger { display: flex; }
+    .sv-hero { padding: 120px 24px 60px; }
+    .sv-service { grid-template-columns: 1fr; gap: 40px; padding: 60px 24px; }
+    .sv-pricing { position: static; }
+    .founding-note { padding: 16px 24px; }
+    .sv-cta-strip { padding: 60px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg width="32" height="32" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="5,55 35,5 35,55" fill="#af2029"/>
+      <path d="M35,10 A22,22,0,0,1,35,50" stroke="#f2f1eb" stroke-width="5" fill="none"/>
+    </svg>
+    <span class="nav-brand">FirBow Social</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html" class="active">Services</a></li>
+    <li><a href="packages.html">Packages</a></li>
+    <li><a href="resources.html">Resources</a></li>
+    <li><a href="partners.html">Partners</a></li>
+    <li><a href="index.html#book" class="nav-cta">Book a Call</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="about.html">About</a>
+  <a href="services.html" class="active">Services</a>
+  <a href="packages.html">Packages</a>
+  <a href="resources.html">Resources</a>
+  <a href="partners.html">Partners</a>
+  <a href="index.html#book" class="mob-cta">Book a Call</a>
+</div>
+
+<!-- HERO -->
+<div class="sv-hero">
+  <div class="sv-breadcrumb">
+    <a href="index.html">Home</a> &nbsp;/&nbsp; Our Services
+  </div>
+  <div class="sv-tag">What We Offer</div>
+  <h1 class="sv-title">Only pay for what<br>you actually <em>need.</em></h1>
+  <p class="sv-intro">Every service we offer is available on its own or as part of a package. No bundles you didn't ask for, no retainers you don't need. Just the support that makes sense for your business, right now.</p>
+  <nav class="sv-service-nav" aria-label="Jump to service">
+    <a href="#channel-strategy">Channel Strategy</a>
+    <a href="#reporting">Social Media Reporting</a>
+    <a href="#paid-social">Paid Social</a>
+    <a href="#content">Content Creation</a>
+    <a href="#competitor">Competitor Analysis</a>
+    <a href="#training">Social Media Training</a>
+  </nav>
+</div>
+
+<!-- FOUNDING NOTE -->
+<div class="founding-note">
+  🎉 All prices below are founding client rates — roughly 50% off our standard pricing. <a href="index.html#book">Spots are limited</a>, so get in touch while they're available.
+</div>
+
+<!-- ① CHANNEL STRATEGY -->
+<div class="sv-service" id="channel-strategy">
+  <div>
+    <div class="sv-icon-wrap">
+      <svg viewBox="0 0 48 48" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="24" cy="24" r="20"/>
+        <path d="M24 4 v6 M24 38 v6 M4 24 h6 M38 24 h6"/>
+        <circle cx="24" cy="24" r="8"/>
+      </svg>
+    </div>
+    <div class="sv-service-tag">Service 01</div>
+    <h2 class="sv-service-title">Channel Strategy</h2>
+    <div class="sv-service-body">
+      <p>We create bespoke strategies that make sense for <em>you</em> and <em>your</em> business — not a generic overview of what usually works. We know that agriculture is different to accounting, and that zoology is nothing like ziplining, so the strategy and channels we recommend are shaped around you and your customers.</p>
+      <p>No two clients get the same plan. We dig into who your audience is, where they spend their time online, and what kind of content will actually land. Then we build you something that reflects all of that.</p>
+      <p>We also know that setting up social channels takes time you probably don't have. If you've been meaning to get on Instagram, or you want to give TikTok a try, we'll get you up and running properly from day one.</p>
+    </div>
+  </div>
+  <div class="sv-pricing">
+    <div class="sv-pricing-title">Founding Client Pricing</div>
+    <div class="sv-price-row">
+      <div class="sv-price-name">
+        <strong>Strategy Audit</strong>
+        A bespoke strategy presentation covering your audience, channels and key metrics
+      </div>
+      <div class="sv-price-amount">£400</div>
+    </div>
+    <div class="sv-price-row">
+      <div class="sv-price-name">
+        <strong>Channel Set-Up</strong>
+        Per channel — we'll get you set up properly and ready to post
+      </div>
+      <div class="sv-price-amount">£100<span style="font-size:0.9rem; font-weight:400">/channel</span></div>
+    </div>
+    <p class="sv-pricing-note">Founding client rates are approx. 50% off standard pricing. Available for a limited number of early clients.</p>
+  </div>
+</div>
+
+<!-- ② SOCIAL MEDIA REPORTING -->
+<div class="sv-service" id="reporting">
+  <div>
+    <div class="sv-icon-wrap">
+      <svg viewBox="0 0 48 48" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="4" y="8" width="40" height="32" rx="2"/>
+        <path d="M16 28 l6-8 6 6 6-10"/>
+      </svg>
+    </div>
+    <div class="sv-service-tag">Service 02</div>
+    <h2 class="sv-service-title">Social Media Reporting</h2>
+    <div class="sv-service-body">
+      <p>To quote Shakira: whenever, wherever. Get a clear picture of how your social channels are performing — on a monthly, quarterly, or annual basis, depending on what suits you best.</p>
+      <p>Our reports are built around <strong>the 5 metrics that matter most to you</strong>. Not a wall of numbers nobody asked for — just the figures that tell you whether what you're doing is working, and what to do next.</p>
+      <p>If you'd rather have the tools to check in yourself, we can build you a reporting template or walk you through the key metrics in a dedicated training session, so you always know what you're looking at.</p>
+    </div>
+  </div>
+  <div class="sv-pricing">
+    <div class="sv-pricing-title">Founding Client Pricing</div>
+    <div class="sv-price-row">
+      <div class="sv-price-name">
+        <strong>Monthly Review</strong>
+        Your chosen 5 metrics, analysed and summarised each month
+      </div>
+      <div class="sv-price-amount">£300</div>
+    </div>
+    <div class="sv-price-row">
+      <div class="sv-price-name">
+        <strong>Quarterly Review</strong>
+        A deeper look at what's working across the quarter
+      </div>
+      <div class="sv-price-amount">£400</div>
+    </div>
+    <div class="sv-price-row">
+      <div class="sv-price-name">
+        <strong>Annual Review</strong>
+        The full picture — trends, wins and recommendations for the year ahead
+      </div>
+      <div class="sv-price-amount">£500</div>
+    </div>
+    <div class="sv-price-row">
+      <div class="sv-price-name">
+        <strong>Reporting Training</strong>
+        A session to make sure you understand exactly what you're looking at
+      </div>
+      <div class="sv-price-amount">£100</div>
+    </div>
+    <div class="sv-price-row">
+      <div class="sv-price-name">
+        <strong>Reporting Template</strong>
+        A ready-to-use template you can fill in and export yourself
+      </div>
+      <div class="sv-price-amount">£150</div>
+    </div>
+    <p class="sv-pricing-note">Founding client rates are approx. 50% off standard pricing. Available for a limited number of early clients.</p>
+  </div>
+</div>
+
+<!-- ③ PAID SOCIAL -->
+<div class="sv-service" id="paid-social">
+  <div>
+    <div class="sv-icon-wrap">
+      <svg viewBox="0 0 48 48" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="24" cy="16" r="8"/>
+        <path d="M12 40 c0-8 24-8 24 0"/>
+        <path d="M34 12 l8-6 M36 20 l8 2"/>
+      </svg>
+    </div>
+    <div class="sv-service-tag">Service 03</div>
+    <h2 class="sv-service-title">Paid Social Strategy</h2>
+    <div class="sv-service-body">
+      <p>Your customers are out there. Paid campaigns are how you find them — reaching the right people, on the right platform, at the right moment — and keep your business growing in a way that's measurable and efficient.</p>
+      <p>We'll build campaigns tailored to your goals, whether that's building awareness, driving traffic, or generating real leads. Every audience we target is bespoke — no broad spraying and hoping for the best.</p>
+      <p>Whether you'd like us to set up and run everything for you, or you'd rather have the tools and know-how to manage campaigns yourself, we've got an option that works. Our best practice document gives you everything you need to optimise your own campaigns with confidence.</p>
+    </div>
+  </div>
+  <div class="sv-pricing">
+    <div class="sv-pricing-title">Founding Client Pricing</div>
+    <div class="sv-price-row">
+      <div class="sv-price-name">
+        <strong>Paid Campaign Set-Up</strong>
+        Per campaign, per channel — full set-up and launch, ready to run
+      </div>
+      <div class="sv-price-amount">£400</div>
+    </div>
+    <div class="sv-price-row">
+      <div class="sv-price-name">
+        <strong>Paid Social Best Practice Document</strong>
+        Everything you need to build and optimise campaigns yourself
+      </div>
+      <div class="sv-price-amount">£400</div>
+    </div>
+    <p class="sv-pricing-note">Media budget (the money spent on the ads themselves) is additional and agreed with you before any campaign goes live. Founding client rates are approx. 50% off standard pricing.</p>
+  </div>
+</div>
+
+<!-- ④ CONTENT CREATION -->
+<div class="sv-service" id="content">
+  <div>
+    <div class="sv-icon-wrap">
+      <svg viewBox="0 0 48 48" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="8" y="4" width="32" height="40" rx="2"/>
+        <path d="M16 16 h16 M16 24 h16 M16 32 h10"/>
+      </svg>
+    </div>
+    <div class="sv-service-tag">Service 04</div>
+    <h2 class="sv-service-title">Content Creation</h2>
+    <div class="sv-service-body">
+      <p>We create content calendars that suit your needs — whether it's staying front-of-mind for your clients or highlighting your latest updates. Our initial package includes content for 20 different posts, with image creation as standard and an option to bring in video through our expert video editor.</p>
+      <p>If you'd rather have the tools to create content yourself, we can build you a bespoke Canva template that keeps everything looking consistent and on-brand — without needing a designer every time you want to post.</p>
+      <p>We can also run a Canva training session, so you feel confident putting the template to use and making it your own.</p>
+    </div>
+  </div>
+  <div class="sv-pricing">
+    <div class="sv-pricing-title">Founding Client Pricing</div>
+    <div class="sv-price-row">
+      <div class="sv-price-name">
+        <strong>Content Calendar (20 posts)</strong>
+        Imagery and copy for 20 posts, ready to schedule
+      </div>
+      <div class="sv-price-amount">£150</div>
+    </div>
+    <div class="sv-price-row">
+      <div class="sv-price-name">
+        <strong>Further Content Posts</strong>
+        Additional posts beyond the initial 20
+      </div>
+      <div class="sv-price-amount">£50<span style="font-size:0.9rem; font-weight:400">/post</span></div>
+    </div>
+    <div class="sv-price-row">
+      <div class="sv-price-name">
+        <strong>Bespoke Canva Template</strong>
+        A branded template so you can create content yourself
+      </div>
+      <div class="sv-price-amount">£150</div>
+    </div>
+    <div class="sv-price-row">
+      <div class="sv-price-name">
+        <strong>Canva Training</strong>
+        A hands-on session to help you get the most out of your template
+      </div>
+      <div class="sv-price-amount">£100</div>
+    </div>
+    <p class="sv-pricing-note">Video content is priced separately depending on complexity. Ask us and we'll give you a clear quote. Founding client rates are approx. 50% off standard pricing.</p>
+  </div>
+</div>
+
+<!-- ⑤ COMPETITOR ANALYSIS -->
+<div class="sv-service" id="competitor">
+  <div>
+    <div class="sv-icon-wrap">
+      <svg viewBox="0 0 48 48" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="20" cy="20" r="14"/>
+        <path d="M30 30 l12 12"/>
+      </svg>
+    </div>
+    <div class="sv-service-tag">Service 05</div>
+    <h2 class="sv-service-title">Competitor Analysis</h2>
+    <div class="sv-service-body">
+      <p>What are your rivals actually up to? We give you a clear-eyed overview of what your competitors are doing on social — what's working for them, what isn't, and where there's a gap you can take advantage of.</p>
+      <p>Our initial audit covers 3 competitors of your choosing. We look at what they post, how often, what kind of engagement they're getting, and what people are saying about them online. You come away knowing exactly where you stand relative to the competition — and what to do about it.</p>
+      <p>Need more than three competitors covered? No problem — just let us know.</p>
+    </div>
+  </div>
+  <div class="sv-pricing">
+    <div class="sv-pricing-title">Founding Client Pricing</div>
+    <div class="sv-price-row">
+      <div class="sv-price-name">
+        <strong>Competitor Audit (3 competitors)</strong>
+        A full social audit covering activity, performance and audience sentiment
+      </div>
+      <div class="sv-price-amount">£150</div>
+    </div>
+    <div class="sv-price-row">
+      <div class="sv-price-name">
+        <strong>Additional Competitors</strong>
+        Each extra competitor added to the audit
+      </div>
+      <div class="sv-price-amount">£50<span style="font-size:0.9rem; font-weight:400">/each</span></div>
+    </div>
+    <p class="sv-pricing-note">Founding client rates are approx. 50% off standard pricing. Available for a limited number of early clients.</p>
+  </div>
+</div>
+
+<!-- ⑥ SOCIAL MEDIA TRAINING -->
+<div class="sv-service" id="training">
+  <div>
+    <div class="sv-icon-wrap">
+      <svg viewBox="0 0 48 48" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M24 4 l4 12 h12 l-10 8 4 12 -10-8 -10 8 4-12 -10-8 h12z"/>
+      </svg>
+    </div>
+    <div class="sv-service-tag">Service 06</div>
+    <h2 class="sv-service-title">Social Media Training</h2>
+    <div class="sv-service-body">
+      <p>Want to manage your own social channels with confidence? Our half-day training session gives you everything you need — from the best practices to follow across each platform, to the practical know-how for setting up, managing and growing your channels yourself.</p>
+      <p>We cover the things that actually matter for your business, not a generic overview that could apply to anyone. By the end of the session, you'll have a clear plan and the confidence to put it into action.</p>
+      <p>And as an added bonus, you'll get access to our <strong>free Facebook community</strong> — where we take questions from businesses just like yours and provide free advice every single week. Think of it as a support network that doesn't clock off.</p>
+    </div>
+  </div>
+  <div class="sv-pricing">
+    <div class="sv-pricing-title">Founding Client Pricing</div>
+    <div class="sv-price-row">
+      <div class="sv-price-name">
+        <strong>Half-Day Social Media Training</strong>
+        A practical, hands-on session covering everything you need to manage social with confidence
+      </div>
+      <div class="sv-price-amount">£250</div>
+    </div>
+    <div class="sv-price-row">
+      <div class="sv-price-name">
+        <strong>Facebook Community Access</strong>
+        Weekly Q&amp;A, peer advice and ongoing support from the FirBow Social community
+      </div>
+      <div class="sv-price-amount">Free</div>
+    </div>
+    <p class="sv-pricing-note">Founding client rates are approx. 50% off standard pricing. Available for a limited number of early clients.</p>
+  </div>
+</div>
+
+<!-- BOTTOM CTA -->
+<div class="sv-cta-strip">
+  <div class="sv-cta-tag">Not sure where to start?</div>
+  <h2 class="sv-cta-title">Let's figure it out<br><em>together.</em></h2>
+  <p class="sv-cta-desc">Book a discovery call and we'll work out which services — if any — make sense for where your business is right now. No pressure, no hard sell, just an honest conversation.</p>
+  <div class="sv-cta-buttons">
+    <a href="index.html#book" class="btn-primary">Book a Discovery Call</a>
+    <a href="index.html#packages" class="btn-ghost">See Our Packages</a>
+  </div>
+</div>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mobileMenu.classList.toggle('open'); });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); }));
+</script>
+
+</body>
+</html>

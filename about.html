@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us | FirBow Social</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #af2029;
+    --navy: #010169;
+    --offwhite: #f2f1eb;
+    --pink: #fec6e9;
+    --blue-light: #99cdef;
+    --black: #111;
+    --white: #ffffff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--offwhite);
+    color: var(--black);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    height: 64px;
+    border-bottom: 3px solid var(--red);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  .nav-brand {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 1.3rem;
+    color: var(--offwhite);
+    letter-spacing: 0.03em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+    align-items: center;
+  }
+
+  .nav-links a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--offwhite);
+    text-decoration: none;
+    opacity: 0.75;
+    transition: opacity 0.2s, color 0.2s;
+  }
+
+  .nav-links a:hover, .nav-links a.active { opacity: 1; color: var(--pink); }
+
+  .nav-cta {
+    background: var(--red);
+    color: var(--white) !important;
+    opacity: 1 !important;
+    padding: 8px 20px;
+    border-radius: 2px;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: #8a1820 !important; }
+
+  /* HERO */
+  .ab-hero {
+    background: var(--navy);
+    padding: 140px 80px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ab-hero::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    border: 100px solid rgba(175,32,41,0.1);
+    pointer-events: none;
+  }
+
+  .ab-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: 25%;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    border: 60px solid rgba(153,205,239,0.07);
+    pointer-events: none;
+  }
+
+  .ab-breadcrumb {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.82rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(242,241,235,0.45);
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .ab-breadcrumb a { color: var(--pink); text-decoration: none; }
+  .ab-breadcrumb a:hover { text-decoration: underline; }
+
+  .ab-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .ab-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2.6rem, 5vw, 4.2rem);
+    line-height: 1;
+    color: var(--offwhite);
+    margin-bottom: 24px;
+    max-width: 700px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .ab-title em { color: var(--red); font-style: italic; }
+
+  .ab-intro {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: rgba(242,241,235,0.7);
+    max-width: 640px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* MISSION STRIP */
+  .ab-mission {
+    background: var(--red);
+    padding: 48px 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .ab-mission-quote {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+    color: var(--white);
+    line-height: 1.15;
+  }
+
+  .ab-mission-values {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .ab-mission-value {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .ab-mission-dot {
+    width: 8px;
+    height: 8px;
+    background: rgba(255,255,255,0.5);
+    border-radius: 50%;
+    margin-top: 7px;
+    flex-shrink: 0;
+  }
+
+  .ab-mission-text {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.55;
+  }
+
+  /* PERSON SECTIONS */
+  .ab-person {
+    padding: 80px 80px;
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 80px;
+    align-items: start;
+    border-bottom: 1px solid rgba(1,1,105,0.1);
+  }
+
+  .ab-person:nth-child(even) { background: var(--white); }
+
+  /* PERSON SIDEBAR */
+  .ab-person-sidebar {
+    position: sticky;
+    top: 88px;
+  }
+
+  .ab-person-photo-placeholder {
+    width: 100%;
+    aspect-ratio: 4/5;
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ab-photo-initials {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 5rem;
+    color: rgba(242,241,235,0.12);
+    letter-spacing: -0.02em;
+  }
+
+  .ab-photo-note {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    font-size: 0.72rem;
+    color: rgba(242,241,235,0.3);
+    font-style: italic;
+    text-align: center;
+  }
+
+  .ab-person-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 2rem;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+
+  .ab-person-role {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.82rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 20px;
+  }
+
+  .ab-person-contact {
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 24px;
+  }
+
+  .ab-person-contact a {
+    color: var(--red);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .ab-person-contact a:hover { text-decoration: underline; }
+
+  .ab-worked-with {
+    margin-top: 24px;
+  }
+
+  .ab-worked-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #aaa;
+    margin-bottom: 10px;
+  }
+
+  .ab-brand-list {
+    font-size: 0.88rem;
+    color: #666;
+    line-height: 1.8;
+  }
+
+  .ab-platform-list {
+    font-size: 0.88rem;
+    color: #666;
+    line-height: 1.8;
+    margin-top: 8px;
+  }
+
+  /* PERSON CONTENT */
+  .ab-person-content {}
+
+  .ab-person-intro {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--navy);
+    line-height: 1.25;
+    margin-bottom: 28px;
+    border-left: 5px solid var(--red);
+    padding-left: 20px;
+  }
+
+  /* SKILL CARDS GRID */
+  .ab-skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-bottom: 2px;
+  }
+
+  .ab-skill-card {
+    background: var(--offwhite);
+    padding: 28px;
+  }
+
+  .ab-person:nth-child(even) .ab-skill-card {
+    background: var(--offwhite);
+  }
+
+  .ab-skill-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 1.15rem;
+    color: var(--navy);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .ab-skill-title::before {
+    content: '';
+    display: block;
+    width: 14px;
+    height: 3px;
+    background: var(--red);
+    flex-shrink: 0;
+  }
+
+  .ab-skill-body {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: #555;
+  }
+
+  .ab-skill-body strong { color: var(--navy); font-weight: 600; }
+
+  /* FUN FACTS BOX */
+  .ab-fun-facts {
+    background: var(--navy);
+    padding: 28px 32px;
+    margin-bottom: 2px;
+  }
+
+  .ab-fun-facts-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 14px;
+  }
+
+  .ab-fun-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .ab-fun-list li {
+    background: rgba(242,241,235,0.08);
+    border: 1px solid rgba(242,241,235,0.12);
+    color: rgba(242,241,235,0.8);
+    font-size: 0.85rem;
+    padding: 6px 14px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+
+  /* CONTRIBUTORS */
+  .ab-contributors {
+    background: var(--navy);
+    padding: 80px 80px;
+  }
+
+  .ab-contrib-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 12px;
+  }
+
+  .ab-contrib-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    color: var(--offwhite);
+    line-height: 1.05;
+    margin-bottom: 16px;
+  }
+
+  .ab-contrib-title em { color: var(--red); font-style: italic; }
+
+  .ab-contrib-intro {
+    font-size: 0.98rem;
+    line-height: 1.7;
+    color: rgba(242,241,235,0.6);
+    max-width: 580px;
+    margin-bottom: 48px;
+  }
+
+  .ab-contrib-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+
+  .ab-contrib-card {
+    background: rgba(242,241,235,0.05);
+    border: 1px solid rgba(242,241,235,0.08);
+    padding: 36px;
+  }
+
+  .ab-contrib-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 1.5rem;
+    color: var(--offwhite);
+    margin-bottom: 4px;
+  }
+
+  .ab-contrib-role {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 6px;
+  }
+
+  .ab-contrib-exp {
+    font-size: 0.82rem;
+    color: rgba(242,241,235,0.4);
+    margin-bottom: 20px;
+  }
+
+  .ab-contrib-strengths {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .ab-contrib-strengths li {
+    font-size: 0.88rem;
+    color: rgba(242,241,235,0.7);
+    padding-left: 14px;
+    position: relative;
+    line-height: 1.4;
+  }
+
+  .ab-contrib-strengths li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--red);
+  }
+
+  /* CTA */
+  .ab-cta {
+    padding: 72px 80px;
+    text-align: center;
+    background: var(--offwhite);
+  }
+
+  .ab-cta-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 14px;
+  }
+
+  .ab-cta-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--navy);
+    line-height: 1.05;
+    margin-bottom: 18px;
+  }
+
+  .ab-cta-title em { color: var(--red); font-style: italic; }
+
+  .ab-cta-desc {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.7;
+    max-width: 520px;
+    margin: 0 auto 36px;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--red);
+    color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: #8a1820; transform: translateY(-2px); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--navy);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    border-radius: 2px;
+    text-decoration: none;
+    border: 2px solid rgba(1,1,105,0.25);
+    transition: border-color 0.2s;
+    display: inline-block;
+  }
+
+  .btn-ghost:hover { border-color: var(--navy); }
+
+  /* RESPONSIVE */
+  @media (max-width: 1000px) {
+    .ab-person { grid-template-columns: 1fr; gap: 40px; }
+    .ab-person-sidebar { position: static; }
+    .ab-person-photo-placeholder { max-width: 320px; }
+  }
+
+  /* HAMBURGER */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 110;
+  }
+  .nav-hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--offwhite);
+    transition: transform 0.25s, opacity 0.25s;
+    transform-origin: center;
+  }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 64px; left: 0; right: 0;
+    background: var(--navy);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 3px solid var(--red);
+    z-index: 99;
+    flex-direction: column;
+    padding: 16px 24px 24px;
+    gap: 4px;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--offwhite);
+    text-decoration: none;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    opacity: 0.8;
+    transition: opacity 0.2s, color 0.2s;
+  }
+  .mobile-menu a:last-child { border-bottom: none; }
+  .mobile-menu a:hover, .mobile-menu a.active { opacity: 1; color: var(--pink); }
+  .mobile-menu .mob-cta {
+    margin-top: 8px;
+    background: var(--red);
+    color: var(--white) !important;
+    opacity: 1 !important;
+    padding: 12px 0;
+    text-align: center;
+    border-bottom: none !important;
+  }
+
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none !important; }
+    .nav-hamburger { display: flex; }
+    .ab-hero { padding: 120px 24px 60px; }
+    .ab-mission { grid-template-columns: 1fr; gap: 32px; padding: 48px 24px; }
+    .ab-person { padding: 60px 24px; }
+    .ab-skills-grid { grid-template-columns: 1fr; }
+    .ab-contributors { padding: 60px 24px; }
+    .ab-contrib-grid { grid-template-columns: 1fr; }
+    .ab-cta { padding: 60px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg width="32" height="32" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="5,55 35,5 35,55" fill="#af2029"/>
+      <path d="M35,10 A22,22,0,0,1,35,50" stroke="#f2f1eb" stroke-width="5" fill="none"/>
+    </svg>
+    <span class="nav-brand">FirBow Social</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="packages.html">Packages</a></li>
+    <li><a href="resources.html">Resources</a></li>
+    <li><a href="partners.html">Partners</a></li>
+    <li><a href="index.html#book" class="nav-cta">Book a Call</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="about.html" class="active">About</a>
+  <a href="services.html">Services</a>
+  <a href="packages.html">Packages</a>
+  <a href="resources.html">Resources</a>
+  <a href="partners.html">Partners</a>
+  <a href="index.html#book" class="mob-cta">Book a Call</a>
+</div>
+
+<!-- HERO -->
+<div class="ab-hero">
+  <div class="ab-breadcrumb">
+    <a href="index.html">Home</a> &nbsp;/&nbsp; About Us
+  </div>
+  <div class="ab-tag">Who We Are</div>
+  <h1 class="ab-title">Real people.<br>Real <em>experience.</em><br>No nonsense.</h1>
+  <p class="ab-intro">FirBow Social was built by people who've spent over a decade each inside some of the world's biggest brands — and got tired of watching businesses get sold social media they didn't need, couldn't measure, and didn't understand. So we did something about it.</p>
+</div>
+
+<!-- MISSION STRIP -->
+<div class="ab-mission">
+  <div class="ab-mission-quote">
+    "It's time for David to beat Goliath. We help businesses use social media to punch above their weight."
+  </div>
+  <div class="ab-mission-values">
+    <div class="ab-mission-value">
+      <div class="ab-mission-dot"></div>
+      <div class="ab-mission-text">We ask questions first — always. Your goals shape everything we do, not the other way around.</div>
+    </div>
+    <div class="ab-mission-value">
+      <div class="ab-mission-dot"></div>
+      <div class="ab-mission-text">We'll tell you if social media isn't the right move. Honestly. Even if that means you don't need us.</div>
+    </div>
+    <div class="ab-mission-value">
+      <div class="ab-mission-dot"></div>
+      <div class="ab-mission-text">No pointless retainers. No jargon. No hard sell. Just the support that actually makes sense for you.</div>
+    </div>
+  </div>
+</div>
+
+<!-- DOUG -->
+<div class="ab-person" id="doug">
+  <div class="ab-person-sidebar">
+    <div class="ab-person-photo-placeholder">
+      <img src="IMG_9817__1_.jpeg" alt="Douglas Elder" style="width:100%; height:100%; object-fit:cover; object-position:center top; display:block;">
+    </div>
+    <div class="ab-person-name">Doug Elder</div>
+    <div class="ab-person-role">Co-Founder · Social Media &amp; Content Expert</div>
+    <div class="ab-person-contact">
+      <a href="mailto:douglas.elder@firbow.com">douglas.elder@firbow.com</a>
+    </div>
+    <div class="ab-worked-with">
+      <div class="ab-worked-label">Worked with</div>
+      <div class="ab-brand-list">Sky · NOW · Fidelity · UBS · Springshaw · iSportConnect</div>
+    </div>
+    <div class="ab-worked-with" style="margin-top:16px">
+      <div class="ab-worked-label">Experienced across</div>
+      <div class="ab-platform-list">Instagram · YouTube · Facebook · Reddit · LinkedIn · X</div>
+    </div>
+  </div>
+
+  <div class="ab-person-content">
+    <div class="ab-fun-facts">
+      <div class="ab-fun-facts-title">In social media since before...</div>
+      <ul class="ab-fun-list">
+        <li>🗳️ The Brexit referendum</li>
+        <li>🚀 Interstellar was released</li>
+        <li>🎵 Uptown Funk</li>
+        <li>⚽ Germany 7–1 Brazil</li>
+        <li>📱 TikTok!</li>
+      </ul>
+    </div>
+
+    <p class="ab-person-intro">I've seen social media change, change back and change again — and I'm still learning. That's what makes it brilliant.</p>
+
+    <div class="ab-skills-grid">
+      <div class="ab-skill-card">
+        <div class="ab-skill-title">Reporting</div>
+        <div class="ab-skill-body">Numbers, numbers, numbers! I love seeing the stories that data tells — showing what content works, why it works, and how that can shape what you do next. When you know what your audience has done, you can start to predict what they'll do next.</div>
+      </div>
+      <div class="ab-skill-card">
+        <div class="ab-skill-title">Content Creation</div>
+        <div class="ab-skill-body">Sometimes you just have to get stuck in! I love creating content that your audience will actually enjoy — using the data to find the right formats and the right messages. From entertainment to investing, I can fit the content to the audience.</div>
+      </div>
+      <div class="ab-skill-card">
+        <div class="ab-skill-title">Paid Social</div>
+        <div class="ab-skill-body">Social media has become critical for advertising — which makes it more important than ever to get your paid strategy right. I work with you to make sure we reach the <strong>right people</strong> in the <strong>right place</strong> at the <strong>right time</strong>. And don't worry — you'll be surprised how far your money can go on Social!</div>
+      </div>
+      <div class="ab-skill-card">
+        <div class="ab-skill-title">Channel Set-Up</div>
+        <div class="ab-skill-body">Mighty oaks from tiny acorns grow. Creating new channels can feel daunting with dozens of things to do — but I love starting the journey. I've set up Instagram, LinkedIn, X and YouTube channels across multiple industries, and I'll make sure you get it right from day one.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DIANA -->
+<div class="ab-person" id="diana">
+  <div class="ab-person-sidebar">
+    <div class="ab-person-photo-placeholder">
+      <img src="IMG_9874.jpeg" alt="Diana Elder" style="width:100%; height:100%; object-fit:cover; object-position:center top; display:block;">
+    </div>
+    <div class="ab-person-name">Diana Elder</div>
+    <div class="ab-person-role">Co-Founder · Social Media &amp; Influencer Expert</div>
+    <div class="ab-person-contact">
+      <a href="mailto:diana.elder.pspc@gmail.com">diana.elder.pspc@gmail.com</a>
+    </div>
+    <div class="ab-worked-with">
+      <div class="ab-worked-label">Worked with</div>
+      <div class="ab-brand-list">Sky · NOW · Experian · Business in the Community · The Mix · Nescafé · Erste Bank · Universal Channel · Harley-Davidson</div>
+    </div>
+    <div class="ab-worked-with" style="margin-top:16px">
+      <div class="ab-worked-label">Experienced across</div>
+      <div class="ab-platform-list">Instagram · TikTok · Facebook · Reddit · Snapchat · LinkedIn · X</div>
+    </div>
+  </div>
+
+  <div class="ab-person-content">
+    <p class="ab-person-intro">"If you're looking for someone who puts YOUR strategy first and fits Social around that — not the other way around — you need me!"</p>
+
+    <div class="ab-skills-grid">
+      <div class="ab-skill-card">
+        <div class="ab-skill-title">Strategy</div>
+        <div class="ab-skill-body">I always ask questions first. I want to understand your business, your goals and dreams, and what keeps you up at night. Big picture first! From there I can help build a solid Social Media and/or Influencer strategy — whether it's focused on sales, brand awareness, or both. (I love a funnel!)</div>
+      </div>
+      <div class="ab-skill-card">
+        <div class="ab-skill-title">Training</div>
+        <div class="ab-skill-body">Upskilling others and getting them confident with social really excites me. If I'm successful, you might never need my help ever again — and honestly, I'd wear that as a badge of honour. One-on-one, group sessions, or helpful documents — I've done it all and it's always a success.</div>
+      </div>
+      <div class="ab-skill-card">
+        <div class="ab-skill-title">Ideas ideas ideas</div>
+        <div class="ab-skill-body">Once something takes root in my brain — your business, your goals, a new product — ideas pop up relentlessly. Even at 2am! I'd love to lend that superpower to whatever you're working towards, and help find the best and most effective ones for you.</div>
+      </div>
+      <div class="ab-skill-card">
+        <div class="ab-skill-title">Planning</div>
+        <div class="ab-skill-body">I love turning breezy ideas into concrete plans and easy-to-deliver schedules. Big or small — I'll plan the phasing for one campaign or give you a full roadmap for the year ahead.</div>
+      </div>
+      <div class="ab-skill-card">
+        <div class="ab-skill-title">Consultancy</div>
+        <div class="ab-skill-body">Before you invest in the people or the output — let's chat. Setting things up with the right goals, building a solid strategy, or finding the best people can stop you wasting money doing the wrong thing. I'll always give you my most honest guidance, including if I don't think you need social media at all.</div>
+      </div>
+      <div class="ab-skill-card">
+        <div class="ab-skill-title">Recruitment</div>
+        <div class="ab-skill-body">I've helped build efficient in-house social media teams that save businesses the cost of agencies. I've recruited for many Social Media and Influencer roles, and can help with designing team structures, writing job specs, designing and conducting interviews, and helping with hiring decisions.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTRIBUTORS -->
+<div class="ab-contributors">
+  <div class="ab-contrib-tag">The wider team</div>
+  <h2 class="ab-contrib-title">Our expert <em>partners.</em></h2>
+  <p class="ab-contrib-intro">When a project calls for specialist skills, we bring in people we know, trust, and have worked alongside for years. Not strangers from a talent pool — people with track records we can vouch for personally.</p>
+
+  <div class="ab-contrib-grid">
+    <div class="ab-contrib-card">
+      <div class="ab-contrib-name">Byron Fitzpatrick</div>
+      <div class="ab-contrib-role">Social Media Strategist</div>
+      <div class="ab-contrib-exp">16 years at Sky, Brainlabs &amp; Caliber</div>
+      <ul class="ab-contrib-strengths">
+        <li>Social platform relationships</li>
+        <li>Social Media strategy</li>
+        <li>Keeping us all honest about where platforms are actually heading</li>
+      </ul>
+    </div>
+    <div class="ab-contrib-card">
+      <div class="ab-contrib-name">Ryan Rosario</div>
+      <div class="ab-contrib-role">Social Video Specialist</div>
+      <div class="ab-contrib-exp">13 years at Sky</div>
+      <ul class="ab-contrib-strengths">
+        <li>Social video creation</li>
+        <li>Social content strategy</li>
+        <li>Making things look and feel genuinely brilliant on screen</li>
+      </ul>
+    </div>
+  </div>
+  <a href="partners.html" style="display:inline-block; margin-top: 32px; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy); text-decoration: none; border-bottom: 2px solid var(--red); padding-bottom: 2px;">Meet all our partners →</a>
+</div>
+
+<!-- CTA -->
+<div class="ab-cta">
+  <div class="ab-cta-tag">Sound like your kind of people?</div>
+  <h2 class="ab-cta-title">Let's have a<br><em>proper chat.</em></h2>
+  <p class="ab-cta-desc">A discovery call is a no-pressure, no-agenda conversation about your business and what you're trying to do. We'll tell you honestly whether we can help — and if we can, what that might look like.</p>
+  <div class="cta-buttons">
+    <a href="index.html#book" class="btn-primary">Book a Discovery Call</a>
+    <a href="services.html" class="btn-ghost">See Our Services</a>
+  </div>
+</div>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  }));
+</script>
+
+</body>
+</html>

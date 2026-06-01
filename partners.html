@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Partners | FirBow Social</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #af2029;
+    --navy: #010169;
+    --offwhite: #f2f1eb;
+    --pink: #fec6e9;
+    --blue-light: #99cdef;
+    --black: #111;
+    --white: #ffffff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--offwhite);
+    color: var(--black);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    height: 64px;
+    border-bottom: 3px solid var(--red);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  .nav-brand {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 1.3rem;
+    color: var(--offwhite);
+    letter-spacing: 0.03em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+    align-items: center;
+  }
+
+  .nav-links a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--offwhite);
+    text-decoration: none;
+    opacity: 0.75;
+    transition: opacity 0.2s, color 0.2s;
+  }
+
+  .nav-links a:hover, .nav-links a.active { opacity: 1; color: var(--pink); }
+
+  .nav-cta {
+    background: var(--red);
+    color: var(--white) !important;
+    opacity: 1 !important;
+    padding: 8px 20px;
+    border-radius: 2px;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: #8a1820 !important; }
+
+  /* HERO */
+  .partners-hero {
+    background: var(--navy);
+    padding: 140px 80px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .partners-hero::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    border: 100px solid rgba(175,32,41,0.1);
+    pointer-events: none;
+  }
+
+  .partners-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: 25%;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    border: 60px solid rgba(153,205,239,0.07);
+    pointer-events: none;
+  }
+
+  .hero-breadcrumb {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.82rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(242,241,235,0.45);
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-breadcrumb a { color: var(--pink); text-decoration: none; }
+  .hero-breadcrumb a:hover { text-decoration: underline; }
+
+  .hero-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2.6rem, 5vw, 4.2rem);
+    line-height: 1;
+    color: var(--offwhite);
+    margin-bottom: 24px;
+    max-width: 760px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-title em { color: var(--red); font-style: italic; }
+
+  .hero-intro {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: rgba(242,241,235,0.7);
+    max-width: 640px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* INTRO STRIP */
+  .partners-intro-strip {
+    background: var(--white);
+    padding: 56px 80px;
+    border-bottom: 1px solid rgba(1,1,105,0.08);
+  }
+
+  .intro-strip-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    max-width: 1100px;
+  }
+
+  .intro-strip-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+    line-height: 1.1;
+    color: var(--navy);
+    margin-bottom: 16px;
+  }
+
+  .intro-strip-title em { color: var(--red); font-style: italic; }
+
+  .intro-strip-body {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: #444;
+  }
+
+  .intro-strip-body p + p { margin-top: 14px; }
+
+  .intro-stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+
+  .intro-stat {
+    background: var(--offwhite);
+    padding: 28px 24px;
+  }
+
+  .intro-stat-number {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 2.8rem;
+    color: var(--navy);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .intro-stat-number span { color: var(--red); }
+
+  .intro-stat-label {
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.4;
+  }
+
+  /* PARTNERS GRID */
+  .partners-section {
+    padding: 80px 80px;
+  }
+
+  .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.82rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    line-height: 1.05;
+    color: var(--navy);
+    margin-bottom: 56px;
+    max-width: 600px;
+  }
+
+  .section-title em { color: var(--red); font-style: italic; }
+
+  .partners-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 2px;
+  }
+
+  /* PARTNER CARD */
+  .partner-card {
+    background: var(--white);
+    padding: 40px;
+    position: relative;
+    transition: background 0.2s;
+  }
+
+  .partner-card:hover { background: var(--navy); }
+
+  .partner-card:hover .partner-name { color: var(--offwhite); }
+  .partner-card:hover .partner-role { color: var(--pink); }
+  .partner-card:hover .partner-exp { color: rgba(242,241,235,0.5); border-color: rgba(242,241,235,0.15); }
+  .partner-card:hover .partner-bio { color: rgba(242,241,235,0.75); }
+  .partner-card:hover .partner-tags .tag { background: rgba(242,241,235,0.1); color: rgba(242,241,235,0.7); }
+  .partner-card:hover .partner-line { background: var(--red); }
+
+  .partner-line {
+    width: 32px;
+    height: 3px;
+    background: var(--red);
+    margin-bottom: 24px;
+    transition: background 0.2s;
+  }
+
+  .partner-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 1.6rem;
+    color: var(--navy);
+    line-height: 1;
+    margin-bottom: 6px;
+    transition: color 0.2s;
+  }
+
+  .partner-role {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.82rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 16px;
+    transition: color 0.2s;
+  }
+
+  .partner-exp {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #888;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(1,1,105,0.1);
+    margin-bottom: 16px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .partner-bio {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: #444;
+    margin-bottom: 20px;
+    transition: color 0.2s;
+  }
+
+  .partner-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    background: var(--offwhite);
+    color: var(--navy);
+    transition: background 0.2s, color 0.2s;
+  }
+
+  /* HOW IT WORKS STRIP */
+  .how-it-works {
+    background: var(--navy);
+    padding: 72px 80px;
+  }
+
+  .how-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.82rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 16px;
+  }
+
+  .how-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    color: var(--offwhite);
+    margin-bottom: 48px;
+    line-height: 1.05;
+  }
+
+  .how-title em { color: var(--red); font-style: italic; }
+
+  .how-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .how-step {
+    background: rgba(242,241,235,0.05);
+    padding: 36px;
+  }
+
+  .how-step-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 2.4rem;
+    color: rgba(175,32,41,0.4);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .how-step-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: var(--offwhite);
+    margin-bottom: 10px;
+    letter-spacing: 0.02em;
+  }
+
+  .how-step-desc {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: rgba(242,241,235,0.55);
+  }
+
+  /* CTA */
+  .partners-cta {
+    background: var(--red);
+    padding: 72px 80px;
+    text-align: center;
+  }
+
+  .cta-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    color: var(--white);
+    margin-bottom: 16px;
+    line-height: 1.05;
+  }
+
+  .cta-desc {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.7;
+    max-width: 520px;
+    margin: 0 auto 36px;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--white);
+    color: var(--red);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--offwhite); transform: translateY(-2px); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    border-radius: 2px;
+    text-decoration: none;
+    border: 2px solid rgba(255,255,255,0.4);
+    transition: border-color 0.2s;
+    display: inline-block;
+  }
+
+  .btn-ghost:hover { border-color: var(--white); }
+
+  /* RESPONSIVE */
+  /* HAMBURGER */
+  .nav-hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; z-index: 110; }
+  .nav-hamburger span { display: block; width: 24px; height: 2px; background: var(--offwhite); transition: transform 0.25s, opacity 0.25s; transform-origin: center; }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .mobile-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; background: var(--navy); border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 3px solid var(--red); z-index: 99; flex-direction: column; padding: 16px 24px 24px; gap: 4px; }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.1rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--offwhite); text-decoration: none; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.07); opacity: 0.8; transition: opacity 0.2s, color 0.2s; }
+  .mobile-menu a:last-child { border-bottom: none; }
+  .mobile-menu a:hover, .mobile-menu a.active { opacity: 1; color: var(--pink); }
+  .mobile-menu .mob-cta { margin-top: 8px; background: var(--red); color: var(--white) !important; opacity: 1 !important; padding: 12px 0; text-align: center; border-bottom: none !important; }
+
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none !important; }
+    .nav-hamburger { display: flex; }
+    .partners-hero { padding: 120px 24px 60px; }
+    .partners-intro-strip { padding: 48px 24px; }
+    .intro-strip-inner { grid-template-columns: 1fr; gap: 36px; }
+    .partners-section { padding: 56px 24px; }
+    .partners-grid { grid-template-columns: 1fr; }
+    .how-it-works { padding: 56px 24px; }
+    .how-steps { grid-template-columns: 1fr; }
+    .partners-cta { padding: 56px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg width="32" height="32" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="5,55 35,5 35,55" fill="#af2029"/>
+      <path d="M35,10 A22,22,0,0,1,35,50" stroke="#f2f1eb" stroke-width="5" fill="none"/>
+    </svg>
+    <span class="nav-brand">FirBow Social</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="packages.html">Packages</a></li>
+    <li><a href="resources.html">Resources</a></li>
+    <li><a href="partners.html" class="active">Partners</a></li>
+    <li><a href="index.html#book" class="nav-cta">Book a Call</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="about.html">About</a>
+  <a href="services.html">Services</a>
+  <a href="packages.html">Packages</a>
+  <a href="resources.html">Resources</a>
+  <a href="partners.html" class="active">Partners</a>
+  <a href="index.html#book" class="mob-cta">Book a Call</a>
+</div>
+
+<!-- HERO -->
+<div class="partners-hero">
+  <div class="hero-breadcrumb">
+    <a href="index.html">Home</a> &nbsp;/&nbsp; Partners
+  </div>
+  <div class="hero-tag">The Extended Team</div>
+  <h1 class="hero-title">The people we call<br>when things get <em>serious.</em></h1>
+  <p class="hero-intro">We're a small team by design — but when a project calls for extra horsepower, we've got a network of trusted specialists who we know, rate, and have worked alongside for years. These aren't people we found on LinkedIn. They're people who've been in the room.</p>
+</div>
+
+<!-- INTRO STRIP -->
+<div class="partners-intro-strip">
+  <div class="intro-strip-inner">
+    <div>
+      <h2 class="intro-strip-title">We don't pretend to be <em>a big agency.</em></h2>
+      <div class="intro-strip-body">
+        <p>We've seen what happens when small businesses get handed off to a junior team at a large agency — the senior people they met at the pitch quietly disappear, and suddenly you're paying premium prices to talk to someone who started six months ago.</p>
+        <p>That's not how we work. We stay small on purpose, and when we need to bring someone in, we bring in people who've actually done the job at the highest level. You always know who's working on your account.</p>
+      </div>
+    </div>
+    <div class="intro-stat-grid">
+      <div class="intro-stat">
+        <div class="intro-stat-number">70<span>+</span></div>
+        <div class="intro-stat-label">Combined years of industry experience</div>
+      </div>
+      <div class="intro-stat">
+        <div class="intro-stat-number">4</div>
+        <div class="intro-stat-label">Trusted specialists in our network</div>
+      </div>
+      <div class="intro-stat">
+        <div class="intro-stat-number">0</div>
+        <div class="intro-stat-label">Surprises on your invoice</div>
+      </div>
+      <div class="intro-stat">
+        <div class="intro-stat-number">100<span>%</span></div>
+        <div class="intro-stat-label">People we'd actually vouch for</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PARTNERS -->
+<div class="partners-section">
+  <div class="section-label">Our Partners</div>
+  <h2 class="section-title">People we trust<br>with your <em>business.</em></h2>
+
+  <div class="partners-grid">
+
+    <div class="partner-card">
+      <div class="partner-line"></div>
+      <div class="partner-name">Byron Fitzpatrick</div>
+      <div class="partner-role">Social Media Strategist</div>
+      <div class="partner-exp">16 years · Sky, Brainlabs &amp; Caliber</div>
+      <p class="partner-bio">Byron knows the social platforms the way a mechanic knows an engine — not from reading the manual, but from taking the thing apart. With direct relationships at the major platforms and a career spent building strategy for some of the UK's biggest brands, he's the person we call when a client needs someone who's already seen every version of this problem.</p>
+      <div class="partner-tags">
+        <span class="tag">Platform Strategy</span>
+        <span class="tag">Social Media Strategy</span>
+        <span class="tag">Platform Relationships</span>
+      </div>
+    </div>
+
+    <div class="partner-card">
+      <div class="partner-line"></div>
+      <div class="partner-name">Ryan Rosario</div>
+      <div class="partner-role">Social Video Specialist</div>
+      <div class="partner-exp">13 years · Sky</div>
+      <p class="partner-bio">Ryan spent 13 years at Sky making things look genuinely brilliant on screen — not "pretty good for a small business" brilliant, but properly done. He understands social video from every angle: the creative, the format, the algorithm, and the bit everyone else skips, which is whether it'll actually stop someone from scrolling. We bring him in when a client needs content that earns its place in the feed.</p>
+      <div class="partner-tags">
+        <span class="tag">Social Video</span>
+        <span class="tag">Content Strategy</span>
+        <span class="tag">Creative Direction</span>
+      </div>
+    </div>
+
+    <div class="partner-card">
+      <div class="partner-line"></div>
+      <div class="partner-name">Kumari Tilakawardane</div>
+      <div class="partner-role">Paid Social Specialist</div>
+      <div class="partner-exp">Performance media · Agency &amp; in-house</div>
+      <p class="partner-bio">Kumari has spent her career in performance media, which means she has a healthy disrespect for impressions and a deep interest in what actually happens after someone clicks. She's worked in-house and agency-side, so she understands both the commercial reality of running a business and the kind of targets that make a CFO's eyes light up. Paid social that doesn't work is just a very expensive hobby — Kumari makes it work.</p>
+      <div class="partner-tags">
+        <span class="tag">Paid Social</span>
+        <span class="tag">Performance Media</span>
+        <span class="tag">Campaign Strategy</span>
+      </div>
+    </div>
+
+    <div class="partner-card">
+      <div class="partner-line"></div>
+      <div class="partner-name">Greg Elder</div>
+      <div class="partner-role">Copywriter &amp; Content Strategist</div>
+      <div class="partner-exp">Editorial &amp; brand copy · Agency background</div>
+      <p class="partner-bio">Greg is the reason some of our clients' social feeds actually sound like a human being wrote them, rather than a committee reviewing a committee's suggestions. He writes copy that has a point of view — which turns out to be a fairly rare skill. Whether it's captions, ad copy, or a full content strategy, Greg brings the kind of clarity that makes people stop, read, and occasionally laugh. We use him when we want to say something properly.</p>
+      <div class="partner-tags">
+        <span class="tag">Copywriting</span>
+        <span class="tag">Content Strategy</span>
+        <span class="tag">Brand Voice</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="how-it-works">
+  <div class="how-label">How it works</div>
+  <h2 class="how-title">You always know who's<br>working on your <em>account.</em></h2>
+  <div class="how-steps">
+    <div class="how-step">
+      <div class="how-step-num">01</div>
+      <div class="how-step-title">We scope your project</div>
+      <div class="how-step-desc">We figure out exactly what you need — not in a vague, everything-is-possible way, but specifically: what skills, what deliverables, what timeline. That scoping conversation is part of the discovery call.</div>
+    </div>
+    <div class="how-step">
+      <div class="how-step-num">02</div>
+      <div class="how-step-title">We bring in the right people</div>
+      <div class="how-step-desc">If a project calls for specialist skills, we pull in the right partner — someone we know, trust, and have worked alongside before. We'll always tell you who's involved and why.</div>
+    </div>
+    <div class="how-step">
+      <div class="how-step-num">03</div>
+      <div class="how-step-title">You deal with us, not them</div>
+      <div class="how-step-desc">Your point of contact stays the same. We coordinate everything behind the scenes so your project runs cleanly — no chasing three different people for updates.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="partners-cta">
+  <h2 class="cta-title">Got a project that needs<br>the full team?</h2>
+  <p class="cta-desc">Book a discovery call and we'll talk through what you're trying to do. If it needs more than just Diana and Doug, we'll tell you — and we'll tell you exactly who we'd bring in.</p>
+  <div class="cta-buttons">
+    <a href="index.html#book" class="btn-primary">Book a Discovery Call</a>
+    <a href="services.html" class="btn-ghost">See Our Services</a>
+  </div>
+</div>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mobileMenu.classList.toggle('open'); });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); }));
+</script>
+
+</body>
+</html>

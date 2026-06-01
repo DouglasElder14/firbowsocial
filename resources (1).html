@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resources | FirBow Social</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #af2029;
+    --navy: #010169;
+    --offwhite: #f2f1eb;
+    --pink: #fec6e9;
+    --blue-light: #99cdef;
+    --black: #111;
+    --white: #ffffff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--offwhite);
+    color: var(--black);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    height: 64px;
+    border-bottom: 3px solid var(--red);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  .nav-brand {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 1.3rem;
+    color: var(--offwhite);
+    letter-spacing: 0.03em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+    align-items: center;
+  }
+
+  .nav-links a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--offwhite);
+    text-decoration: none;
+    opacity: 0.75;
+    transition: opacity 0.2s, color 0.2s;
+  }
+
+  .nav-links a:hover, .nav-links a.active { opacity: 1; color: var(--pink); }
+
+  .nav-cta {
+    background: var(--red);
+    color: var(--white) !important;
+    opacity: 1 !important;
+    padding: 8px 20px;
+    border-radius: 2px;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: #8a1820 !important; }
+
+  /* HERO */
+  .res-hero {
+    background: var(--navy);
+    padding: 140px 80px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .res-hero::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    border: 100px solid rgba(175,32,41,0.1);
+    pointer-events: none;
+  }
+
+  .res-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: 25%;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    border: 60px solid rgba(153,205,239,0.07);
+    pointer-events: none;
+  }
+
+  .res-breadcrumb {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.82rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(242,241,235,0.45);
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .res-breadcrumb a { color: var(--pink); text-decoration: none; }
+  .res-breadcrumb a:hover { text-decoration: underline; }
+
+  .res-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .res-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2.6rem, 5vw, 4.2rem);
+    line-height: 1;
+    color: var(--offwhite);
+    margin-bottom: 24px;
+    max-width: 700px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .res-title em { color: var(--red); font-style: italic; }
+
+  .res-intro {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: rgba(242,241,235,0.7);
+    max-width: 620px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* COMING SOON BANNER */
+  .coming-soon-bar {
+    background: var(--offwhite);
+    border-bottom: 1px solid rgba(1,1,105,0.1);
+    padding: 18px 80px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 0.9rem;
+    color: #666;
+  }
+
+  .coming-soon-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--red);
+    flex-shrink: 0;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* CATEGORY FILTER */
+  .res-filter-bar {
+    padding: 40px 80px 0;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    border: 2px solid rgba(1,1,105,0.2);
+    background: transparent;
+    color: var(--navy);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .filter-btn:hover, .filter-btn.active {
+    background: var(--navy);
+    border-color: var(--navy);
+    color: var(--white);
+  }
+
+  /* CATEGORY SECTIONS */
+  .res-section {
+    padding: 64px 80px;
+    border-bottom: 1px solid rgba(1,1,105,0.08);
+  }
+
+  .res-section:last-of-type { border-bottom: none; }
+
+  .res-section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 36px;
+  }
+
+  .res-section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 1.8rem;
+    color: var(--navy);
+  }
+
+  .res-section-count {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(1,1,105,0.35);
+  }
+
+  /* RESOURCE GRID */
+  .res-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2px;
+  }
+
+  /* RESOURCE CARD — populated */
+  .res-card {
+    background: var(--white);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.2s;
+    position: relative;
+  }
+
+  .res-card:hover { background: var(--navy); }
+  .res-card:hover .res-card-title { color: var(--offwhite); }
+  .res-card:hover .res-card-desc { color: rgba(242,241,235,0.65); }
+  .res-card:hover .res-card-meta { color: rgba(242,241,235,0.4); }
+  .res-card:hover .res-card-type { background: rgba(242,241,235,0.12); color: var(--offwhite); }
+  .res-card:hover .res-card-arrow { color: var(--red); }
+
+  .res-card-type {
+    display: inline-block;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    background: var(--offwhite);
+    color: var(--navy);
+    align-self: flex-start;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .res-card-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 1.25rem;
+    color: var(--navy);
+    line-height: 1.15;
+    transition: color 0.2s;
+  }
+
+  .res-card-desc {
+    font-size: 0.88rem;
+    line-height: 1.65;
+    color: #555;
+    transition: color 0.2s;
+    flex: 1;
+  }
+
+  .res-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 4px;
+  }
+
+  .res-card-meta {
+    font-size: 0.75rem;
+    color: #aaa;
+    transition: color 0.2s;
+  }
+
+  .res-card-arrow {
+    font-size: 1.1rem;
+    color: var(--red);
+    transition: color 0.2s;
+  }
+
+  /* PLACEHOLDER CARD — coming soon */
+  .res-card-placeholder {
+    background: rgba(1,1,105,0.03);
+    border: 2px dashed rgba(1,1,105,0.12);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
+    min-height: 180px;
+  }
+
+  .placeholder-icon {
+    font-size: 1.6rem;
+    opacity: 0.25;
+  }
+
+  .placeholder-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(1,1,105,0.3);
+  }
+
+  /* PAYWALLED / TEASED CARD */
+  .res-card-locked {
+    background: var(--white);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  .res-card-locked:hover { border-color: var(--navy); }
+
+  .locked-shimmer {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 40%, rgba(254,198,233,0.06) 50%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .locked-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    align-self: flex-start;
+  }
+
+  .locked-type {
+    display: inline-block;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    background: var(--navy);
+    color: var(--offwhite);
+  }
+
+  .locked-free-tag {
+    display: inline-block;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    background: rgba(175,32,41,0.1);
+    color: var(--red);
+    border: 1px solid rgba(175,32,41,0.25);
+  }
+
+  .locked-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 1.3rem;
+    color: var(--navy);
+    line-height: 1.15;
+  }
+
+  .locked-desc {
+    font-size: 0.88rem;
+    line-height: 1.65;
+    color: #555;
+    flex: 1;
+  }
+
+  .locked-preview {
+    background: var(--offwhite);
+    padding: 16px;
+    border-left: 3px solid var(--red);
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: #444;
+    font-style: italic;
+  }
+
+  .locked-preview strong {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--navy);
+    display: block;
+    margin-bottom: 4px;
+    font-family: 'Barlow Condensed', sans-serif;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+  }
+
+  .locked-gate {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-top: 4px;
+    flex-wrap: wrap;
+  }
+
+  .locked-gate-note {
+    font-size: 0.78rem;
+    color: #999;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .lock-icon {
+    font-size: 0.85rem;
+  }
+
+  .locked-gate .btn-locked {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 10px 22px;
+    background: var(--navy);
+    color: var(--white);
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background 0.2s;
+    white-space: nowrap;
+  }
+
+  .locked-gate .btn-locked:hover { background: #000050; }
+
+  /* SUGGEST STRIP */
+  .res-suggest {
+    background: var(--navy);
+    padding: 56px 80px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+    align-items: center;
+  }
+
+  .res-suggest-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 1.6rem;
+    color: var(--offwhite);
+    margin-bottom: 10px;
+  }
+
+  .res-suggest-desc {
+    font-size: 0.92rem;
+    line-height: 1.65;
+    color: rgba(242,241,235,0.6);
+    max-width: 520px;
+  }
+
+  /* CTA STRIP */
+  .res-cta {
+    background: var(--red);
+    padding: 64px 80px;
+    text-align: center;
+  }
+
+  .res-cta-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    color: var(--white);
+    margin-bottom: 14px;
+    line-height: 1.05;
+  }
+
+  .res-cta-desc {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.65;
+    max-width: 520px;
+    margin: 0 auto 32px;
+  }
+
+  .btn-primary {
+    background: var(--white);
+    color: var(--red);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--offwhite); transform: translateY(-2px); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    border-radius: 2px;
+    text-decoration: none;
+    border: 2px solid rgba(255,255,255,0.4);
+    transition: border-color 0.2s;
+    display: inline-block;
+  }
+
+  .btn-ghost:hover { border-color: var(--white); }
+
+  .cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* EMAIL GATE MODAL */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(1,1,105,0.7);
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s;
+  }
+
+  .modal-overlay.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .modal-box {
+    background: var(--white);
+    max-width: 500px;
+    width: 100%;
+    padding: 48px;
+    position: relative;
+    transform: translateY(16px);
+    transition: transform 0.25s;
+  }
+
+  .modal-overlay.open .modal-box { transform: translateY(0); }
+
+  .modal-close {
+    position: absolute;
+    top: 16px; right: 20px;
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    cursor: pointer;
+    color: #aaa;
+    line-height: 1;
+  }
+
+  .modal-close:hover { color: var(--navy); }
+
+  .modal-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 12px;
+  }
+
+  .modal-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 1.8rem;
+    color: var(--navy);
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+
+  .modal-desc {
+    font-size: 0.88rem;
+    color: #666;
+    line-height: 1.65;
+    margin-bottom: 28px;
+  }
+
+  .modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .modal-input {
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.92rem;
+    padding: 12px 16px;
+    border: 2px solid rgba(1,1,105,0.15);
+    background: var(--offwhite);
+    color: var(--black);
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+
+  .modal-input:focus { border-color: var(--navy); }
+
+  .modal-submit {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 14px 24px;
+    background: var(--red);
+    color: var(--white);
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 4px;
+  }
+
+  .modal-submit:hover { background: #8a1820; }
+
+  .modal-fine-print {
+    font-size: 0.75rem;
+    color: #bbb;
+    line-height: 1.5;
+    margin-top: 8px;
+  }
+
+  .modal-success {
+    display: none;
+    text-align: center;
+    padding: 16px 0;
+  }
+
+  .modal-success-icon {
+    font-size: 2.4rem;
+    margin-bottom: 16px;
+  }
+
+  .modal-success-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 1.5rem;
+    color: var(--navy);
+    margin-bottom: 10px;
+  }
+
+  .modal-success-desc {
+    font-size: 0.88rem;
+    color: #666;
+    line-height: 1.65;
+  }
+
+  /* RESPONSIVE */
+  /* HAMBURGER */
+  .nav-hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; z-index: 110; }
+  .nav-hamburger span { display: block; width: 24px; height: 2px; background: var(--offwhite); transition: transform 0.25s, opacity 0.25s; transform-origin: center; }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .mobile-menu { display: none; position: fixed; top: 64px; left: 0; right: 0; background: var(--navy); border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 3px solid var(--red); z-index: 99; flex-direction: column; padding: 16px 24px 24px; gap: 4px; }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.1rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--offwhite); text-decoration: none; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.07); opacity: 0.8; transition: opacity 0.2s, color 0.2s; }
+  .mobile-menu a:last-child { border-bottom: none; }
+  .mobile-menu a:hover, .mobile-menu a.active { opacity: 1; color: var(--pink); }
+  .mobile-menu .mob-cta { margin-top: 8px; background: var(--red); color: var(--white) !important; opacity: 1 !important; padding: 12px 0; text-align: center; border-bottom: none !important; }
+
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none !important; }
+    .nav-hamburger { display: flex; }
+    .res-hero { padding: 120px 24px 60px; }
+    .coming-soon-bar { padding: 16px 24px; }
+    .res-filter-bar { padding: 32px 24px 0; }
+    .res-section { padding: 48px 24px; }
+    .res-suggest { grid-template-columns: 1fr; padding: 40px 24px; }
+    .res-cta { padding: 48px 24px; }
+    .res-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg width="32" height="32" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="5,55 35,5 35,55" fill="#af2029"/>
+      <path d="M35,10 A22,22,0,0,1,35,50" stroke="#f2f1eb" stroke-width="5" fill="none"/>
+    </svg>
+    <span class="nav-brand">FirBow Social</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="packages.html">Packages</a></li>
+    <li><a href="resources.html" class="active">Resources</a></li>
+    <li><a href="partners.html">Partners</a></li>
+    <li><a href="index.html#book" class="nav-cta">Book a Call</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="about.html">About</a>
+  <a href="services.html">Services</a>
+  <a href="packages.html">Packages</a>
+  <a href="resources.html" class="active">Resources</a>
+  <a href="partners.html">Partners</a>
+  <a href="index.html#book" class="mob-cta">Book a Call</a>
+</div>
+
+<!-- HERO -->
+<div class="res-hero">
+  <div class="res-breadcrumb">
+    <a href="index.html">Home</a> &nbsp;/&nbsp; Resources
+  </div>
+  <div class="res-tag">Free Resources</div>
+  <h1 class="res-title">Stuff worth knowing<br>about <em>social media.</em></h1>
+  <p class="res-intro">Guides, templates and explainers to help you get more from social — whether you're working with us or going it alone. We'll keep adding to this as we go, so check back whenever you like.</p>
+</div>
+
+<!-- COMING SOON BAR -->
+<div class="coming-soon-bar">
+  <div class="coming-soon-dot"></div>
+  <span>This page is being built up over time — new resources are added regularly. Got something you'd like us to cover? <a href="mailto:enquiries@firbowsocial.com" style="color: var(--red); font-weight: 600; text-decoration: none;">Drop us a line.</a></span>
+</div>
+
+<!-- GETTING STARTED -->
+<div class="res-section" id="getting-started">
+  <div class="res-section-header">
+    <div class="res-section-title">Getting Started</div>
+    <div class="res-section-count">Coming soon</div>
+  </div>
+  <div class="res-grid">
+    <div class="res-card-placeholder">
+      <div class="placeholder-icon">📋</div>
+      <div class="placeholder-label">Which social channels are right for your business?</div>
+    </div>
+    <div class="res-card-placeholder">
+      <div class="placeholder-icon">🎯</div>
+      <div class="placeholder-label">How to define your target audience in 5 steps</div>
+    </div>
+    <div class="res-card-placeholder">
+      <div class="placeholder-icon">📅</div>
+      <div class="placeholder-label">How to build a content calendar from scratch</div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTENT & CREATIVE -->
+<div class="res-section" id="content">
+  <div class="res-section-header">
+    <div class="res-section-title">Content &amp; Creative</div>
+    <div class="res-section-count">Coming soon</div>
+  </div>
+  <div class="res-grid">
+    <div class="res-card-placeholder">
+      <div class="placeholder-icon">✍️</div>
+      <div class="placeholder-label">Writing captions that actually get read</div>
+    </div>
+    <div class="res-card-placeholder">
+      <div class="placeholder-icon">🎨</div>
+      <div class="placeholder-label">Design basics for non-designers</div>
+    </div>
+    <div class="res-card-placeholder">
+      <div class="placeholder-icon">📱</div>
+      <div class="placeholder-label">What to post when you don't know what to post</div>
+    </div>
+  </div>
+</div>
+
+<!-- PAID SOCIAL -->
+<div class="res-section" id="paid-social">
+  <div class="res-section-header">
+    <div class="res-section-title">Paid Social</div>
+    <div class="res-section-count">1 available</div>
+  </div>
+  <div class="res-grid">
+
+    <!-- GATED RESOURCE: Paid Social Best Practice -->
+    <div class="res-card-locked">
+      <div class="locked-shimmer"></div>
+      <div class="locked-badge">
+        <span class="locked-type">Guide</span>
+        <span class="locked-free-tag">Free Download</span>
+      </div>
+      <div class="locked-title">Paid Social Best Practice Guide</div>
+      <p class="locked-desc">A comprehensive guide to running paid social campaigns that actually perform — covering where paid social fits in the funnel, what the platforms do differently, how to plan campaigns, and what to do when things go wrong.</p>
+      <div class="locked-preview">
+        <strong>What's inside</strong>
+        Channel-by-channel breakdowns (Facebook, Instagram, TikTok, LinkedIn, YouTube, X, Reddit). Campaign planning from objectives to budget allocation. Creative best practice for image and video. A troubleshooting guide for common problems and what they actually mean.
+      </div>
+      <div class="locked-gate">
+        <span class="locked-gate-note"><span class="lock-icon">🔒</span> Free — just leave us your email</span>
+        <button class="btn-locked" onclick="openModal('paid-social')">Get the Guide →</button>
+      </div>
+    </div>
+
+    <div class="res-card-placeholder">
+      <div class="placeholder-icon">💰</div>
+      <div class="placeholder-label">How much should I spend on social ads?</div>
+    </div>
+    <div class="res-card-placeholder">
+      <div class="placeholder-icon">🔁</div>
+      <div class="placeholder-label">Awareness vs traffic vs lead gen — what's the difference?</div>
+    </div>
+  </div>
+</div>
+
+<!-- REPORTING & ANALYTICS -->
+<div class="res-section" id="reporting">
+  <div class="res-section-header">
+    <div class="res-section-title">Reporting &amp; Analytics</div>
+    <div class="res-section-count">1 available</div>
+  </div>
+  <div class="res-grid">
+
+    <!-- GATED RESOURCE: Reporting Template -->
+    <div class="res-card-locked">
+      <div class="locked-shimmer"></div>
+      <div class="locked-badge">
+        <span class="locked-type">Template</span>
+        <span class="locked-free-tag">Free Download</span>
+      </div>
+      <div class="locked-title">The Monthly Social Media Reporting Template</div>
+      <p class="locked-desc">A ready-to-use reporting deck covering everything from executive summary to platform-by-platform performance. Fill in your numbers, swap in your screenshots, and you've got a professional monthly report — without starting from scratch.</p>
+      <div class="locked-preview">
+        <strong>What's inside</strong>
+        An at-a-glance headlines slide. KPI dashboard with traffic-light status. Content performance by theme and format. Campaign breakdowns for organic and paid. Platform-by-platform deep dives. Competitor tracking. A/B test learnings. Recommendations slide. Plus internal guidance notes on what to keep and what to update each month.
+      </div>
+      <div class="locked-gate">
+        <span class="locked-gate-note"><span class="lock-icon">🔒</span> Free — just leave us your email</span>
+        <button class="btn-locked" onclick="openModal('reporting')">Get the Template →</button>
+      </div>
+    </div>
+
+    <div class="res-card-placeholder">
+      <div class="placeholder-icon">📈</div>
+      <div class="placeholder-label">The 5 social metrics every business should track</div>
+    </div>
+    <div class="res-card-placeholder">
+      <div class="placeholder-icon">🔍</div>
+      <div class="placeholder-label">How to read your Facebook insights without a headache</div>
+    </div>
+  </div>
+</div>
+
+<!-- SUGGEST A TOPIC -->
+<div class="res-suggest">
+  <div>
+    <div class="res-suggest-title">Got a topic you'd like us to cover?</div>
+    <p class="res-suggest-desc">We're building this page based on what's actually useful to businesses like yours. If there's something you're struggling with or a question you keep coming back to, tell us — and we'll do our best to turn it into a resource.</p>
+  </div>
+  <a href="mailto:enquiries@firbowsocial.com?subject=Resource suggestion" class="btn-primary" style="background: var(--red); color: var(--white); white-space: nowrap;">Suggest a topic →</a>
+</div>
+
+<!-- CTA -->
+<div class="res-cta">
+  <div class="res-cta-title">Want hands-on help<br>rather than a guide?</div>
+  <p class="res-cta-desc">Sometimes a conversation is quicker than a how-to article. Book a discovery call and we'll help you figure out exactly what your business needs.</p>
+  <div class="cta-buttons">
+    <a href="index.html#book" class="btn-primary">Book a Discovery Call</a>
+    <a href="services.html" class="btn-ghost">See Our Services</a>
+  </div>
+</div>
+<!-- EMAIL GATE MODAL -->
+<div class="modal-overlay" id="templateModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <div id="modalForm">
+      <div class="modal-tag" id="modalTag">Free Resource</div>
+      <div class="modal-title" id="modalTitle">The Social Media Reporting Template</div>
+      <p class="modal-desc" id="modalDesc">Drop your name and email below and we'll send it straight over. No newsletter unless you ask for one.</p>
+      <div class="modal-form">
+        <input class="modal-input" type="text" placeholder="Your first name" id="modalName">
+        <input class="modal-input" type="email" placeholder="Your email address" id="modalEmail">
+        <button class="modal-submit" id="modalSubmitBtn" onclick="submitForm()">Send Me the Template →</button>
+        <p class="modal-fine-print">We'll email you the template and that's it. We won't add you to a mailing list without your permission.</p>
+      </div>
+    </div>
+    <div class="modal-success" id="modalSuccess">
+      <div class="modal-success-icon" id="modalSuccessIcon">📬</div>
+      <div class="modal-success-title" id="modalSuccessTitle">On its way to you now.</div>
+      <p class="modal-success-desc" id="modalSuccessDesc">Check your inbox — the template should land in the next couple of minutes. Check your spam folder if it doesn't show up.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  let currentModalType = 'reporting';
+
+  const modalContent = {
+    'reporting': {
+      tag: 'Free Template',
+      title: 'The Monthly Social Media Reporting Template',
+      desc: 'Drop your name and email below and we\'ll send it straight over. No newsletter unless you ask for one.',
+      btn: 'Send Me the Template →',
+      successTitle: 'On its way to you now.',
+      successDesc: 'Check your inbox — the template should land in the next couple of minutes. Check your spam folder if it doesn\'t show up.'
+    },
+    'paid-social': {
+      tag: 'Free Guide',
+      title: 'Paid Social Best Practice Guide',
+      desc: 'Leave your name and email and we\'ll send the guide straight over. No newsletter unless you ask for one.',
+      btn: 'Send Me the Guide →',
+      successTitle: 'On its way to you now.',
+      successDesc: 'Check your inbox — the guide should land in the next couple of minutes. Check your spam folder if it doesn\'t show up.'
+    }
+  };
+
+  function openModal(type) {
+    currentModalType = type || 'reporting';
+    const c = modalContent[currentModalType];
+    document.getElementById('modalTag').textContent = c.tag;
+    document.getElementById('modalTitle').textContent = c.title;
+    document.getElementById('modalDesc').textContent = c.desc;
+    document.getElementById('modalSubmitBtn').textContent = c.btn;
+    document.getElementById('modalForm').style.display = 'block';
+    document.getElementById('modalSuccess').style.display = 'none';
+    document.getElementById('modalName').value = '';
+    document.getElementById('modalEmail').value = '';
+    document.getElementById('templateModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('templateModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('templateModal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+
+  function submitForm() {
+    const name = document.getElementById('modalName').value.trim();
+    const email = document.getElementById('modalEmail').value.trim();
+    if (!name || !email || !email.includes('@')) {
+      alert('Please enter your name and a valid email address.');
+      return;
+    }
+    // TODO: Wire to Formspree or your email platform here.
+    // Example: fetch('https://formspree.io/f/YOUR_FORM_ID', {
+    //   method: 'POST',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify({ name, email, resource: currentModalType })
+    // });
+    // Then trigger your autoresponder to send the correct PDF based on 'resource' field.
+    const c = modalContent[currentModalType];
+    document.getElementById('modalSuccessIcon').textContent = '📬';
+    document.getElementById('modalSuccessTitle').textContent = c.successTitle;
+    document.getElementById('modalSuccessDesc').textContent = c.successDesc;
+    document.getElementById('modalForm').style.display = 'none';
+    document.getElementById('modalSuccess').style.display = 'block';
+    setTimeout(closeModal, 4500);
+  }
+
+  // Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mobileMenu.classList.toggle('open'); });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); }));
+</script>
+
+</body>
+</html>
